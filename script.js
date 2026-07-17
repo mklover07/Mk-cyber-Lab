@@ -196,6 +196,7 @@ function runWayback() {
 }
 
 // ===== CONSOLE EASTER EGG =====
-console.log('%c🔮 MK OSINT Cyber Lab v2.0', 'font-size:22px;color:#ff00ff;font-weight:bold;');
-console.log('%c🛸 Ethical OSINT Tools — For Learning Only', 'font-size:14px;color:#00f0ff;');
-console.log('%c⚠️ Always follow the law and respect privacy.', 'font-size:12px;color:#88aabb;');
+console.log('%c⚡ MK GLOBAL NEXUS', 'font-size:24px;color:#ff00ff;font-weight:bold;');
+console.log('%c🔍 Cyber Intelligence • Investigation • Awareness', 'font-size:14px;color:#00f0ff;');
+console.log('%c🏛️ Truth · Integrity · Justice', 'font-size:12px;color:#ffffff;');
+console.log('%c⚠️ OSINT Tools — For Educational & Research Purpose Only', 'font-size:12px;color:#88aabb;');
