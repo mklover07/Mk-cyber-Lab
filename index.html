@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MK Cyber Lab 🛡️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ MK Cyber Lab</h1>
+        <p class="subtitle">Cyber Security Practice Platform</p>
+        
+        <div class="card-grid">
+            <div class="card">
+                <h2>🔍 Vulnerability Scanner</h2>
+                <p>अपनी वेबसाइट को स्कैन करें और कमजोरियाँ ढूंढें</p>
+                <input type="text" id="scanInput" placeholder="Enter URL (eg: example.com)">
+                <button onclick="scanWebsite()">Start Scan</button>
+                <div id="scanResult"></div>
+            </div>
+
+            <div class="card">
+                <h2>💀 Reverse Shell Lab</h2>
+                <p>Ethical Hacking का अभ्यास करें (सिर्फ लैब में)</p>
+                <button onclick="shellLab()">Start Shell Lab</button>
+                <div id="shellResult"></div>
+            </div>
+
+            <div class="card">
+                <h2>📊 Security Dashboard</h2>
+                <p>रियल-टाइम सिक्योरिटी स्टेटस</p>
+                <div id="status">🟢 System Secure</div>
+                <button onclick="checkSecurity()">Check Status</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>⚠️ सिर्फ Educational Purpose के लिए | MK Cyber Lab v1.0</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
