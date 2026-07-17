@@ -1,8 +1,7 @@
 /* ============================================================ */
-/* ====== 🏆 BRANDING — MK GLOBAL NEXUS ====== */
+/* ====== 🏆 BRANDING — MK CYBER HUB ====== */
 /* ============================================================ */
 
-/* ----- RESET & BASE ----- */
 * {
     margin: 0;
     padding: 0;
@@ -67,7 +66,7 @@ body {
     100% { transform: scale(1.2); opacity: 1; }
 }
 
-/* ----- HERO BRAND SECTION ----- */
+/* ----- HERO BRAND ----- */
 .hero-brand {
     position: relative;
     z-index: 1;
@@ -82,7 +81,31 @@ body {
     margin: 0 auto;
 }
 
-/* ===== BRAND LOGO ===== */
+/* ----- BRAND LOGO ----- */
+.brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.logo-icon {
+    font-size: 3.5rem;
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.logo-text {
+    font-size: 3.8rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
+
 .logo-text .mk {
     color: #ff00ff;
     text-shadow: 0 0 40px rgba(255, 0, 255, 0.3);
@@ -96,14 +119,15 @@ body {
     text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
 }
 
-/* ===== FOOTER BRAND ===== */
-.footer-brand {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 4px;
-    margin-bottom: 4px;
+.brand-tagline {
+    color: #88ccdd;
+    font-size: 1.1rem;
+    letter-spacing: 6px;
+    opacity: 0.7;
+    margin-bottom: 30px;
+    font-weight: 300;
 }
+
 /* ----- ABOUT BOX ----- */
 .about-box {
     display: flex;
@@ -198,7 +222,7 @@ body {
     transform: translateY(-2px);
 }
 
-/* ----- BRAND DIVIDER ----- */
+/* ----- DIVIDER ----- */
 .brand-divider {
     display: flex;
     justify-content: center;
@@ -221,7 +245,7 @@ body {
     50% { opacity: 0.8; }
 }
 
-/* ----- MISSION • VISION • VALUES GRID ----- */
+/* ----- MISSION • VISION • VALUES ----- */
 .brand-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -273,7 +297,7 @@ body {
 }
 
 /* ============================================================ */
-/* ====== HEADER / OSINT SECTION ====== */
+/* ====== HEADER ====== */
 /* ============================================================ */
 
 header {
@@ -487,6 +511,26 @@ footer {
 .footer-content .highlight {
     color: #00f0ff;
 }
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin: 15px 0 12px;
+}
+.footer-link {
+    display: inline-block;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #88aabb;
+    transition: all 0.3s ease;
+}
+.footer-link:hover {
+    color: #00f0ff;
+    transform: translateY(-3px) scale(1.1);
+    text-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+}
+
 .footer-glow {
     margin-top: 15px;
     color: #668899;
@@ -515,48 +559,4 @@ footer {
     .tools-grid { grid-template-columns: 1fr; padding: 15px; }
     .intro-box h2 { font-size: 1.5rem; }
     .tagline { font-size: 0.8rem; letter-spacing: 3px; }
-}
-/* ===== FOOTER SOCIAL LINKS ===== */
-.footer-social {
-    display: flex;
-    justify-content: center;
-    gap: 18px;
-    margin: 15px 0 12px;
-}
-
-.footer-link {
-    display: inline-block;
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: #88aabb;
-    transition: all 0.3s ease;
-    padding: 5px 8px;
-    border-radius: 50%;
-}
-
-.footer-link:hover {
-    color: #00f0ff;
-    transform: translateY(-3px) scale(1.1);
-    text-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
-}
-
-/* Tooltip on hover */
-.footer-link[title]:hover::after {
-    content: attr(title);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 240, 255, 0.1);
-    border: 1px solid rgba(0, 240, 255, 0.2);
-    padding: 4px 12px;
-    border-radius: 8px;
-    font-size: 0.65rem;
-    color: #00f0ff;
-    white-space: nowrap;
-    backdrop-filter: blur(10px);
-}
-
-.footer-link {
-    position: relative;
 }
