@@ -541,3 +541,47 @@ footer {
     .intro-box h2 { font-size: 1.5rem; }
     .tagline { font-size: 0.8rem; letter-spacing: 3px; }
 }
+/* ===== FOOTER SOCIAL LINKS ===== */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin: 15px 0 12px;
+}
+
+.footer-link {
+    display: inline-block;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #88aabb;
+    transition: all 0.3s ease;
+    padding: 5px 8px;
+    border-radius: 50%;
+}
+
+.footer-link:hover {
+    color: #00f0ff;
+    transform: translateY(-3px) scale(1.1);
+    text-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+}
+
+/* Tooltip on hover */
+.footer-link[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.65rem;
+    color: #00f0ff;
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+}
+
+.footer-link {
+    position: relative;
+}
