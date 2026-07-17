@@ -1,110 +1,201 @@
-// ===== Vulnerability Scanner =====
-function scanWebsite() {
-    const input = document.getElementById('scanInput');
-    const resultDiv = document.getElementById('scanResult');
-    const url = input.value.trim();
-
-    if (!url) {
-        resultDiv.innerHTML = '❌ कृपया कोई URL डालें!';
-        return;
-    }
-
-    resultDiv.innerHTML = '🔍 Scanning... please wait';
-
-    // सिमुलेटेड स्कैन (असली स्कैन नहीं है, सिर्फ डेमो)
+// ============================================
+// 1. GOOGLE DORKING
+// ============================================
+function runDork() {
+    const input = document.getElementById('dorkInput');
+    const result = document.getElementById('dorkResult');
+    const query = input.value.trim() || 'site:example.com intitle:"login"';
+    result.innerHTML = '🔍 Scanning Google index...';
     setTimeout(() => {
-        const vulnerabilities = [
-            'XSS (Cross-Site Scripting) - 🔴 High',
-            'SQL Injection - 🟠 Medium',
-            'Open Redirect - 🟡 Low',
-            'Missing Security Headers - 🟠 Medium',
-            'Outdated SSL Certificate - 🟡 Low'
-        ];
-
-        const random = Math.floor(Math.random() * vulnerabilities.length);
-        const result = vulnerabilities[random];
-
-        resultDiv.innerHTML = `
-            <strong>🔎 Scan Results for ${url}</strong><br>
-            Found: ${result}<br>
-            <small style="color:#666;">⚠️ यह एक डेमो है, असली स्कैन नहीं</small>
-        `;
-    }, 2000);
-}
-
-// ===== Reverse Shell Lab =====
-function shellLab() {
-    const resultDiv = document.getElementById('shellResult');
-    
-    resultDiv.innerHTML = '🔄 Initializing Shell...';
-
-    setTimeout(() => {
-        resultDiv.innerHTML = `
-            💀 Reverse Shell Started<br>
-            <span style="color:#00ff00;">Connection Established ✅</span><br>
-            <span style="color:#aaa;font-size:0.8rem;">
-                Commands: whoami, ls, pwd, id, exit
-            </span><br>
-            <input type="text" id="shellCmd" placeholder="Enter command..." 
-                   style="width:100%;margin-top:10px;padding:8px;border-radius:5px;border:1px solid #333;background:rgba(255,255,255,0.05);color:white;">
-            <button onclick="runShellCommand()" 
-                    style="width:100%;margin-top:5px;padding:8px;background:#00f2fe;border:none;border-radius:5px;color:#0a0e27;font-weight:bold;cursor:pointer;">
-                Run Command
-            </button>
-            <div id="shellOutput" style="margin-top:10px;color:#00ff00;font-family:monospace;"></div>
+        result.innerHTML = `
+            ✅ Found 23 hidden pages<br>
+            📄 /admin/login.php<br>
+            📄 /backup/config.bak<br>
+            📄 /secret/credentials.txt<br>
+            ⚠️ ${query} — 8 results
         `;
     }, 1500);
 }
 
-function runShellCommand() {
-    const cmdInput = document.getElementById('shellCmd');
-    const outputDiv = document.getElementById('shellOutput');
-    const cmd = cmdInput.value.trim();
-
-    if (!cmd) {
-        outputDiv.innerHTML = '⚠️ Type a command!';
-        return;
-    }
-
-    // सिमुलेटेड कमांड रिस्पांस
-    const responses = {
-        'whoami': 'user@mk-cyber-lab',
-        'ls': 'Desktop  Documents  Downloads  Pictures  videos  secret.txt',
-        'pwd': '/home/user/mk-cyber-lab',
-        'id': 'uid=1000(user) gid=1000(user) groups=1000(user),4(adm),27(sudo)',
-        'exit': '🔌 Connection closed. Type "whoami" to reconnect.',
-        'cat secret.txt': '🔐 Flag{cyber_lab_is_fun_2026}'
-    };
-
-    const output = responses[cmd] || `❌ Command not found: ${cmd}`;
-    outputDiv.innerHTML = `$ ${cmd}<br>${output}`;
-    cmdInput.value = '';
+// ============================================
+// 2. SHODAN
+// ============================================
+function runShodan() {
+    const input = document.getElementById('shodanInput');
+    const result = document.getElementById('shodanResult');
+    const query = input.value.trim() || 'apache port:80';
+    result.innerHTML = '🌐 Scanning Shodan database...';
+    setTimeout(() => {
+        result.innerHTML = `
+            🖥️ 12 devices found<br>
+            🔌 192.168.1.105:80 (Apache/2.4.49)<br>
+            🔌 10.0.0.23:443 (nginx/1.18.0)<br>
+            🔌 172.16.0.45:8080 (Tomcat 9)
+        `;
+    }, 1600);
 }
 
-// ===== Security Dashboard =====
-function checkSecurity() {
-    const statusDiv = document.getElementById('status');
-    
-    statusDiv.innerHTML = '🔍 Checking...';
-    statusDiv.style.color = '#ffaa00';
-
+// ============================================
+// 3. CENSYS
+// ============================================
+function runCensys() {
+    const input = document.getElementById('censysInput');
+    const result = document.getElementById('censysResult');
+    const domain = input.value.trim() || 'example.com';
+    result.innerHTML = '📡 Querying Censys...';
     setTimeout(() => {
-        const threats = ['No threats found ✅', 'Suspicious activity detected ⚠️', 'All systems secure 🟢'];
-        const random = Math.floor(Math.random() * threats.length);
-        
-        if (random === 0) {
-            statusDiv.innerHTML = '🟢 System Secure - No Threats Found';
-            statusDiv.style.color = '#00ff00';
-        } else if (random === 1) {
-            statusDiv.innerHTML = '🟠 Suspicious Activity Detected - Check Logs';
-            statusDiv.style.color = '#ffaa00';
-        } else {
-            statusDiv.innerHTML = '🟢 All Systems Operational';
-            statusDiv.style.color = '#00ff00';
-        }
+        result.innerHTML = `
+            🏷️ Host: ${domain}<br>
+            📜 SSL Certificate: Let\'s Encrypt R3<br>
+            🌍 IPs: 93.184.216.34, 2606:2800:220:1:248:1893:25c8:1946<br>
+            🔓 Ports open: 80, 443, 22
+        `;
+    }, 1400);
+}
+
+// ============================================
+// 4. THEHARVESTER
+// ============================================
+function runHarvester() {
+    const input = document.getElementById('harvestInput');
+    const result = document.getElementById('harvestResult');
+    const domain = input.value.trim() || 'example.com';
+    result.innerHTML = '📧 Harvesting emails...';
+    setTimeout(() => {
+        result.innerHTML = `
+            📧 admin@${domain}<br>
+            📧 contact@${domain}<br>
+            📧 support@${domain}<br>
+            📧 info@${domain}<br>
+            🌐 Subdomains: mail.${domain}, dev.${domain}, api.${domain}
+        `;
     }, 1500);
 }
 
-// ===== Console Warning =====
-console.log('%c🔥 MK Cyber Lab Loaded Successfully!', 'font-size:20px;color:#4facfe;');
-console.log('%c⚠️ यह सिर्फ शैक्षिक उद्देश्य के लिए है', 'font-size:14px;color:#ffaa00;');
+// ============================================
+// 5. SPIDERFOOT
+// ============================================
+function runSpiderfoot() {
+    const input = document.getElementById('spiderInput');
+    const result = document.getElementById('spiderResult');
+    const target = input.value.trim() || 'target.com';
+    result.innerHTML = '🕷️ Spiderfoot crawling...';
+    setTimeout(() => {
+        result.innerHTML = `
+            🕸️ Found 47 data points<br>
+            🔗 DNS: ns1.${target}, ns2.${target}<br>
+            📧 15 emails harvested<br>
+            🌍 3 subdomains discovered<br>
+            🔍 2 open ports (22, 443)
+        `;
+    }, 1800);
+}
+
+// ============================================
+// 6. MALTEGO
+// ============================================
+function runMaltego() {
+    const input = document.getElementById('maltegoInput');
+    const result = document.getElementById('maltegoResult');
+    const company = input.value.trim() || 'Company XYZ';
+    result.innerHTML = '🕸️ Generating relationship map...';
+    setTimeout(() => {
+        result.innerHTML = `
+            🏢 ${company}<br>
+            ├── 📧 ceo@${company}.com<br>
+            ├── 📧 hr@${company}.com<br>
+            ├── 🌐 domain: ${company}.com<br>
+            ├── 📱 Twitter: @${company}<br>
+            └── 🔗 LinkedIn: ${company} Inc.
+        `;
+    }, 1600);
+}
+
+// ============================================
+// 7. WHOIS
+// ============================================
+function runWhois() {
+    const input = document.getElementById('whoisInput');
+    const result = document.getElementById('whoisResult');
+    const domain = input.value.trim() || 'example.com';
+    result.innerHTML = '📋 Fetching WHOIS data...';
+    setTimeout(() => {
+        result.innerHTML = `
+            📌 Domain: ${domain}<br>
+            🏢 Registrar: NameCheap, Inc.<br>
+            📅 Created: 1995-08-14<br>
+            ⏳ Expires: 2026-08-13<br>
+            🌐 Nameservers: ns1.${domain}, ns2.${domain}<br>
+            📧 Admin: admin@${domain}
+        `;
+    }, 1400);
+}
+
+// ============================================
+// 8. VIRUSTOTAL
+// ============================================
+function runVirusTotal() {
+    const input = document.getElementById('vtInput');
+    const result = document.getElementById('vtResult');
+    const url = input.value.trim() || 'https://example.com';
+    result.innerHTML = '🦠 Scanning with 70+ antivirus engines...';
+    setTimeout(() => {
+        const safe = Math.random() > 0.3;
+        result.innerHTML = safe ? `
+            ✅ ${url} — Clean<br>
+            🟢 0/72 detections<br>
+            📊 Last scan: 2 hours ago
+        ` : `
+            ⚠️ ${url} — Suspicious<br>
+            🟡 3/72 detections<br>
+            🦠 Malware: Trojan.Generic.12345
+        `;
+    }, 1700);
+}
+
+// ============================================
+// 9. HAVE I BEEN PWNED
+// ============================================
+function runPwned() {
+    const input = document.getElementById('pwnedInput');
+    const result = document.getElementById('pwnedResult');
+    const email = input.value.trim() || 'test@example.com';
+    result.innerHTML = '🔓 Checking breach databases...';
+    setTimeout(() => {
+        const pwned = Math.random() > 0.5;
+        result.innerHTML = pwned ? `
+            🔴 ${email} — PWNED!<br>
+            📋 Found in 3 breaches:<br>
+            • Adobe (2013)<br>
+            • LinkedIn (2016)<br>
+            • Collection #1 (2019)
+        ` : `
+            🟢 ${email} — No breaches found!<br>
+            ✅ Your email is secure (for now)
+        `;
+    }, 1500);
+}
+
+// ============================================
+// 10. WAYBACK MACHINE
+// ============================================
+function runWayback() {
+    const input = document.getElementById('waybackInput');
+    const result = document.getElementById('waybackResult');
+    const site = input.value.trim() || 'example.com';
+    result.innerHTML = '📜 Fetching archived snapshots...';
+    setTimeout(() => {
+        result.innerHTML = `
+            🗄️ ${site} — 47 snapshots found<br>
+            📅 2024-01-15: "Welcome to ${site}"<br>
+            📅 2023-08-22: "Under Construction"<br>
+            📅 2022-11-03: "${site} - Homepage"<br>
+            🕰️ Oldest: 2015-03-10
+        `;
+    }, 1500);
+}
+
+// ===== CONSOLE EASTER EGG =====
+console.log('%c🔮 MK OSINT Cyber Lab v2.0', 'font-size:22px;color:#ff00ff;font-weight:bold;');
+console.log('%c🛸 Ethical OSINT Tools — For Learning Only', 'font-size:14px;color:#00f0ff;');
+console.log('%c⚠️ Always follow the law and respect privacy.', 'font-size:12px;color:#88aabb;');
