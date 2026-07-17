@@ -3,42 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MK Cyber Lab 🛡️</title>
+    <title>🔮 MK OSINT Cyber Lab</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🛡️ MK Cyber Lab</h1>
-        <p class="subtitle">Cyber Security Practice Platform</p>
-        
-        <div class="card-grid">
-            <div class="card">
-                <h2>🔍 Vulnerability Scanner</h2>
-                <p>अपनी वेबसाइट को स्कैन करें और कमजोरियाँ ढूंढें</p>
-                <input type="text" id="scanInput" placeholder="Enter URL (eg: example.com)">
-                <button onclick="scanWebsite()">Start Scan</button>
-                <div id="scanResult"></div>
-            </div>
+    <!-- ====== SCI-FI ANIMATED BACKGROUND ====== -->
+    <div id="stars"></div>
+    <div id="glow"></div>
 
-            <div class="card">
-                <h2>💀 Reverse Shell Lab</h2>
-                <p>Ethical Hacking का अभ्यास करें (सिर्फ लैब में)</p>
-                <button onclick="shellLab()">Start Shell Lab</button>
-                <div id="shellResult"></div>
-            </div>
+    <!-- ====== HEADER ====== -->
+    <header>
+        <div class="header-content">
+            <h1>🔮 MK <span class="highlight">CYBER</span> LAB</h1>
+            <p class="tagline">⚡ OSINT • Recon • Threat Intelligence ⚡</p>
+            <div class="scanline"></div>
+        </div>
+    </header>
 
-            <div class="card">
-                <h2>📊 Security Dashboard</h2>
-                <p>रियल-टाइम सिक्योरिटी स्टेटस</p>
-                <div id="status">🟢 System Secure</div>
-                <button onclick="checkSecurity()">Check Status</button>
+    <!-- ====== INTRO SECTION ====== -->
+    <section class="intro">
+        <div class="intro-box">
+            <h2>🛸 TOP 10 FREE OSINT TOOLS</h2>
+            <p class="sub">EVERY BEGINNER SHOULD KNOW</p>
+            <p class="desc">OSINT (Open Source Intelligence) is the art of gathering publicly available information <span class="glow-text">ethically</span> and <span class="glow-text">legally</span>.</p>
+        </div>
+    </section>
+
+    <!-- ====== TOOL CARDS GRID ====== -->
+    <section class="tools-grid">
+
+        <!-- 1. GOOGLE DORKING -->
+        <div class="tool-card">
+            <div class="tool-icon">🔍</div>
+            <h3>GOOGLE DORKING</h3>
+            <p>Use advanced search operators to discover hidden pages, files, and sensitive information.</p>
+            <div class="tool-demo">
+                <input type="text" id="dorkInput" placeholder='site:example.com intitle:"login"' class="cyber-input">
+                <button onclick="runDork()" class="cyber-btn">▶ EXECUTE</button>
+                <div id="dorkResult" class="result-box"></div>
             </div>
+            <span class="badge">🏆 Best for: Finding hidden content</span>
         </div>
 
-        <footer>
-            <p>⚠️ सिर्फ Educational Purpose के लिए | MK Cyber Lab v1.0</p>
-        </footer>
-    </div>
+        <!-- 2. SHODAN -->
+        <div class="tool-card">
+            <div class="tool-icon">🌐</div>
+            <h3>SHODAN</h3>
+            <p>Search internet-connected devices and exposed services.</p>
+            <div class="tool-demo">
+                <input type="text" id="shodanInput" placeholder='apache port:80' class="cyber-input">
+                <button onclick="runShodan()" class="cyber-btn">▶ EXECUTE</button>
+                <div id="shodanResult" class="result-box"></div>
+            </div>
+            <span class="badge">🏆 Best for: Exposed devices & ports</span>
+        </div>
+
+        <!-- 3. CENSYS -->
+        <div class="tool-card">
+            <div class="tool-icon">📡</div>
+            <h3>CENSYS</h3>
+            <p>Explore internet-facing hosts, certificates, and network infrastructure.</p>
+            <div class="tool-demo">
+                <input type="text" id="censysInput" placeholder='example.com' class="cyber-input">
+                <button onclick="runCensys()" class="cyber-btn">▶ EXECUTE</button>
+                <div id="censysResult" class="result-box"></div>
+            </div>
+            <span class="badge">🏆 Best for: Attack surface mapping</span>
+        </div>
+
+        <!-- 4. THEHARVESTER -->
+        <div class="tool-card">
+            <div class="tool-icon">📧</div>
+            <h3>THEHARVESTER</h3>
+            <p>Gather emails, subdomains, hosts, and other public information about a domain.</p>
+            <div class="tool-demo">
+                <input type="text" id="harvestInput" placeholder='example.com' class="cyber-input">
+                <button onclick="runHarvester()" class="cyber-btn">▶ EXECUTE</button>
+                <div id="harvestResult" class="result-box"></div>
+            </div>
+            <span class="badge">🏆 Best for: Email harvesting</span>
+        </div>
+
+        <!-- 5. SPIDERFOOT -->
+        <div class="tool-card">
+            <div class="tool-icon">🕷️</div>
+            <h3>SPIDERFOOT</h3>
+            <p>Automate OSINT collection from multiple public data sources.</p>
+            <div class="tool-demo">
+                <input type="text" id="spiderInput" placeholder='target.com' class="cyber-input">
+                <button onclick="runSpiderfoot()" class="cyber-btn">▶ EXECUTE</button>
+                <div id="spiderResult" class="result-box"></div>
+            </div>
+            <span class="badge">🏆 Best for: Automated recon</span>
+        </div>
+
+        <!-- 6. MALTEGO -->
+        <div class="tool-card">
+            <div class="tool-icon">🕸️</div>
+            <h3>MALTEGO</h3>
+            <p>Visualize relationships between people, domains, emails, and organizations.</p>
+            <div class="tool-demo">
+                <input type="text" id="maltegoInput" placeholder='company name' class="cyber-input">
+                <button onclick="runMaltego()" class="cyber-btn">▶ EXECUTE</button>
+                <div id="maltegoResult" class="result-box"></div>
+            </div>
+            <span class="badge">🏆 Best for: Link analysis</span>
+        </div>
+
+        <!-- 7. WHOIS -->
+        <div class="tool-card">
+            <div class="tool-icon">📋</div>
+            <h3>WHOIS LOOKUP</h3>
+            <p>Find domain registration details, ownership info, nameservers, and more.</p>
+            <div class="tool-demo">
+                <input type="text" id="whoisInput" placeholder='example.com' class="cyber-input">
+                <button onclick="runWhois()" class="cyber-btn">▶ EXECUTE</button>
+                <div id="whoisResult" class="result-box"></div>
+            </div>
+            <span class="badge">🏆 Best for: Domain ownership data</span>
+        </div>
+
+        <!-- 8. VIRUSTOTAL -->
+        <div class="tool-card">
+            <div class="tool-icon">🦠</div>
+            <h3>VIRUSTOTAL</h3>
+            <p>Analyze files, URLs, and domains using multiple security engines.</p>
+            <div class="tool-demo">
+                <input type="text" id="vtInput" placeholder='https://example.com' class="cyber-input">
+                <button onclick="runVirusTotal()" class="cyber-btn">▶ EXECUTE</button>
+                <div id="vtResult" class="result-box"></div>
+            </div>
+            <span class="badge">🏆 Best for: Malware detection</span>
+        </div>
+
+        <!-- 9. HAVE I BEEN PWNED -->
+        <div class="tool-card">
+            <div class="tool-icon">🔓</div>
+            <h3>HAVE I BEEN PWNED</h3>
+            <p>Check if an email address has appeared in known data breaches.</p>
+            <div class="tool-demo">
+                <input type="email" id="pwnedInput" placeholder='you@example.com' class="cyber-input">
+                <button onclick="runPwned()" class="cyber-btn">▶ EXECUTE</button>
+                <div id="pwnedResult" class="result-box"></div>
+            </div>
+            <span class="badge">🏆 Best for: Breach detection</span>
+        </div>
+
+        <!-- 10. WAYBACK MACHINE -->
+        <div class="tool-card">
+            <div class="tool-icon">📜</div>
+            <h3>WAYBACK MACHINE</h3>
+            <p>View archived versions of websites to investigate historical changes.</p>
+            <div class="tool-demo">
+                <input type="text" id="waybackInput" placeholder='example.com' class="cyber-input">
+                <button onclick="runWayback()" class="cyber-btn">▶ EXECUTE</button>
+                <div id="waybackResult" class="result-box"></div>
+            </div>
+            <span class="badge">🏆 Best for: Historical web data</span>
+        </div>
+
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer>
+        <div class="footer-content">
+            <p>⚠️ <span class="glow-text">REMEMBER:</span> OSINT is about using publicly available information responsibly.</p>
+            <p>Always follow the law, respect privacy, and use these tools for <span class="highlight">research, security, and learning</span>.</p>
+            <div class="footer-glow">⚡ MK Cyber Lab v2.0 • Sci-Fi OSINT Edition ⚡</div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
