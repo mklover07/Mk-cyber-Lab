@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MK Cyber Hub — Cyber Intelligence & Investigation</title>
+    <title>MK Cyber Hub — Global Cyber Intelligence</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Three.js for 3D Globe -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
-    <!-- ====== TOP BAR — WEATHER + TIME + DATE ====== -->
+    <!-- ====== TOP BAR ====== -->
     <div class="top-bar">
         <div class="top-bar-left">
             <span class="weather-icon">🌤️</span>
             <span id="weatherTemp">34°C</span>
             <span id="weatherCity">Jodhpur, India</span>
+        </div>
+        <div class="top-bar-center">
+            <span class="status-dot">🟢</span>
+            <span>SYSTEM ONLINE</span>
         </div>
         <div class="top-bar-right">
             <span id="currentDate">Sat, 18 Jul 2026</span>
@@ -22,24 +28,52 @@
     </div>
 
     <!-- ========================================================= -->
-    <!-- ====== 🏆 BRANDING — MK CYBER HUB ====== -->
+    <!-- ====== 3D GLOBE BACKGROUND ====== -->
     <!-- ========================================================= -->
-    <section class="hero-brand">
-        <div class="brand-container">
-            <!-- ब्रांड लोगो -->
-            <div class="brand-logo">
-                <span class="logo-icon">⚡</span>
-                <span class="logo-text">
-                    <span class="mk">MK</span>
-                    <span class="cyber-brand">CYBER</span>
-                    <span class="hub">HUB</span>
-                </span>
+    <div id="globe-container"></div>
+
+    <!-- ========================================================= -->
+    <!-- ====== OVERLAY CONTENT ====== -->
+    <!-- ========================================================= -->
+    <div class="overlay-content">
+
+        <!-- ====== BRANDING ====== -->
+        <section class="hero-brand">
+            <div class="brand-container">
+                <div class="brand-logo">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">
+                        <span class="mk">MK</span>
+                        <span class="cyber-brand">CYBER</span>
+                        <span class="hub">HUB</span>
+                    </span>
+                </div>
+                <p class="brand-tagline">🌍 GLOBAL CYBER INTELLIGENCE • THREAT MONITORING</p>
             </div>
+        </section>
 
-            <!-- टैगलाइन -->
-            <p class="brand-tagline">⚡ Empowering People Through Truth, Technology & Awareness ⚡</p>
+        <!-- ====== STATS BAR ====== -->
+        <section class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-value" id="totalThreats">12,847</span>
+                <span class="stat-label">Total Threats</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="activeAttacks">342</span>
+                <span class="stat-label">Active Attacks</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="vulnerabilities">1,204</span>
+                <span class="stat-label">Vulnerabilities</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="countries">189</span>
+                <span class="stat-label">Countries Monitored</span>
+            </div>
+        </section>
 
-            <!-- ====== ABOUT MANOJ MEENA ====== -->
+        <!-- ====== ABOUT MANOJ MEENA ====== -->
+        <section class="about-section">
             <div class="about-box">
                 <div class="about-avatar">👨‍💼</div>
                 <div class="about-text">
@@ -53,233 +87,167 @@
                     </div>
                     <p class="bio">
                         <strong>Manoj Meena</strong> is the Founder of <strong>MK Cyber Hub</strong>, 
-                        dedicated to promoting <span class="glow-text">cyber security awareness</span>, 
-                        <span class="glow-text">digital fraud investigation</span>, 
-                        <span class="glow-text">investigative journalism</span>, and 
-                        <span class="glow-text">public education</span>. 
-                        He believes in ethical investigation, fact-based reporting, 
-                        responsible use of technology, and empowering people through 
-                        knowledge and awareness.
+                        dedicated to <span class="glow-text">global cyber security</span>, 
+                        <span class="glow-text">digital fraud investigation</span>, and 
+                        <span class="glow-text">public awareness</span>.
                     </p>
-                    <!-- ====== SOCIAL LINKS ====== -->
                     <div class="about-social">
-                        <a href="#" target="_blank" class="social-link">🐦 Twitter</a>
-                        <a href="#" target="_blank" class="social-link">💻 GitHub</a>
-                        <a href="#" target="_blank" class="social-link">🔗 LinkedIn</a>
-                        <a href="#" target="_blank" class="social-link">📺 YouTube</a>
-                        <a href="#" target="_blank" class="social-link">📸 Instagram</a>
-                        <a href="#" target="_blank" class="social-link">👍 Facebook</a>
+                        <a href="#" class="social-link">🐦 Twitter</a>
+                        <a href="#" class="social-link">💻 GitHub</a>
+                        <a href="#" class="social-link">🔗 LinkedIn</a>
                         <a href="#" class="social-link">📧 Email</a>
-                        <a href="#" class="social-link">🌐 Website</a>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- ====== BRAND DIVIDER ====== -->
-            <div class="brand-divider">
-                <span>◆</span>
-                <span>✦</span>
-                <span>◆</span>
-                <span>✦</span>
-                <span>◆</span>
+        <!-- ====== OSINT TOOLS ====== -->
+        <section class="tools-section">
+            <div class="tools-header">
+                <h2>🛸 TOP 10 OSINT TOOLS</h2>
+                <p class="tools-sub">REAL-TIME INTELLIGENCE GATHERING</p>
             </div>
 
-            <!-- ====== MISSION • VISION • VALUES ====== -->
-            <div class="brand-grid">
-                <div class="brand-card">
-                    <h3>🎯 Mission</h3>
-                    <p>To empower individuals and organizations through <strong>truth, technology, investigation, and public awareness</strong> — contributing to a safer and more informed digital society.</p>
+            <div class="tools-grid">
+                <!-- Tool 1 -->
+                <div class="tool-card">
+                    <div class="tool-icon">🔍</div>
+                    <h3>GOOGLE DORKING</h3>
+                    <p>Find hidden pages and sensitive data.</p>
+                    <div class="tool-demo">
+                        <input type="text" id="dorkInput" placeholder='site:example.com' class="cyber-input">
+                        <button onclick="runDork()" class="cyber-btn">▶ EXECUTE</button>
+                        <div id="dorkResult" class="result-box"></div>
+                    </div>
                 </div>
-                <div class="brand-card">
-                    <h3>🌐 Vision</h3>
-                    <p>To establish <strong>MK Cyber Hub</strong> as a trusted organization in <strong>Cyber Intelligence, Digital Investigation, Investigative Journalism, and Public Awareness</strong> with professionalism, integrity, and innovation.</p>
+
+                <!-- Tool 2 -->
+                <div class="tool-card">
+                    <div class="tool-icon">🌐</div>
+                    <h3>SHODAN</h3>
+                    <p>Search internet-connected devices.</p>
+                    <div class="tool-demo">
+                        <input type="text" id="shodanInput" placeholder='apache port:80' class="cyber-input">
+                        <button onclick="runShodan()" class="cyber-btn">▶ EXECUTE</button>
+                        <div id="shodanResult" class="result-box"></div>
+                    </div>
                 </div>
-                <div class="brand-card">
-                    <h3>💎 Core Values</h3>
-                    <p>
-                        <span class="value-tag">Truth</span>
-                        <span class="value-tag">Integrity</span>
-                        <span class="value-tag">Transparency</span>
-                        <span class="value-tag">Justice</span>
-                        <span class="value-tag">Professionalism</span>
-                        <span class="value-tag">Innovation</span>
-                        <span class="value-tag">Accountability</span>
-                        <span class="value-tag">Public Service</span>
-                    </p>
+
+                <!-- Tool 3 -->
+                <div class="tool-card">
+                    <div class="tool-icon">📡</div>
+                    <h3>CENSYS</h3>
+                    <p>Explore network infrastructure.</p>
+                    <div class="tool-demo">
+                        <input type="text" id="censysInput" placeholder='example.com' class="cyber-input">
+                        <button onclick="runCensys()" class="cyber-btn">▶ EXECUTE</button>
+                        <div id="censysResult" class="result-box"></div>
+                    </div>
                 </div>
-                <div class="brand-card motto-card">
-                    <h3>🏛️ Motto</h3>
-                    <p class="motto-text">Truth · Integrity · Justice</p>
+
+                <!-- Tool 4 -->
+                <div class="tool-card">
+                    <div class="tool-icon">📧</div>
+                    <h3>THEHARVESTER</h3>
+                    <p>Gather emails and subdomains.</p>
+                    <div class="tool-demo">
+                        <input type="text" id="harvestInput" placeholder='example.com' class="cyber-input">
+                        <button onclick="runHarvester()" class="cyber-btn">▶ EXECUTE</button>
+                        <div id="harvestResult" class="result-box"></div>
+                    </div>
+                </div>
+
+                <!-- Tool 5 -->
+                <div class="tool-card">
+                    <div class="tool-icon">🕷️</div>
+                    <h3>SPIDERFOOT</h3>
+                    <p>Automate OSINT collection.</p>
+                    <div class="tool-demo">
+                        <input type="text" id="spiderInput" placeholder='target.com' class="cyber-input">
+                        <button onclick="runSpiderfoot()" class="cyber-btn">▶ EXECUTE</button>
+                        <div id="spiderResult" class="result-box"></div>
+                    </div>
+                </div>
+
+                <!-- Tool 6 -->
+                <div class="tool-card">
+                    <div class="tool-icon">🕸️</div>
+                    <h3>MALTEGO</h3>
+                    <p>Visualize relationships.</p>
+                    <div class="tool-demo">
+                        <input type="text" id="maltegoInput" placeholder='company name' class="cyber-input">
+                        <button onclick="runMaltego()" class="cyber-btn">▶ EXECUTE</button>
+                        <div id="maltegoResult" class="result-box"></div>
+                    </div>
+                </div>
+
+                <!-- Tool 7 -->
+                <div class="tool-card">
+                    <div class="tool-icon">📋</div>
+                    <h3>WHOIS</h3>
+                    <p>Domain ownership data.</p>
+                    <div class="tool-demo">
+                        <input type="text" id="whoisInput" placeholder='example.com' class="cyber-input">
+                        <button onclick="runWhois()" class="cyber-btn">▶ EXECUTE</button>
+                        <div id="whoisResult" class="result-box"></div>
+                    </div>
+                </div>
+
+                <!-- Tool 8 -->
+                <div class="tool-card">
+                    <div class="tool-icon">🦠</div>
+                    <h3>VIRUSTOTAL</h3>
+                    <p>Malware detection.</p>
+                    <div class="tool-demo">
+                        <input type="text" id="vtInput" placeholder='https://example.com' class="cyber-input">
+                        <button onclick="runVirusTotal()" class="cyber-btn">▶ EXECUTE</button>
+                        <div id="vtResult" class="result-box"></div>
+                    </div>
+                </div>
+
+                <!-- Tool 9 -->
+                <div class="tool-card">
+                    <div class="tool-icon">🔓</div>
+                    <h3>HAVE I BEEN PWNED</h3>
+                    <p>Check data breaches.</p>
+                    <div class="tool-demo">
+                        <input type="email" id="pwnedInput" placeholder='you@example.com' class="cyber-input">
+                        <button onclick="runPwned()" class="cyber-btn">▶ EXECUTE</button>
+                        <div id="pwnedResult" class="result-box"></div>
+                    </div>
+                </div>
+
+                <!-- Tool 10 -->
+                <div class="tool-card">
+                    <div class="tool-icon">📜</div>
+                    <h3>WAYBACK</h3>
+                    <p>Historical web data.</p>
+                    <div class="tool-demo">
+                        <input type="text" id="waybackInput" placeholder='example.com' class="cyber-input">
+                        <button onclick="runWayback()" class="cyber-btn">▶ EXECUTE</button>
+                        <div id="waybackResult" class="result-box"></div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- ====== OSINT TOOLS SECTION ====== -->
-    <!-- ========================================================= -->
-    <section class="tools-section">
-        <div class="tools-header">
-            <h2>🛸 TOP 10 FREE OSINT TOOLS</h2>
-            <p class="tools-sub">EVERY BEGINNER SHOULD KNOW</p>
-            <p class="tools-desc">OSINT (Open Source Intelligence) is the art of gathering publicly available information <span class="glow-text">ethically</span> and <span class="glow-text">legally</span>.</p>
-        </div>
-
-        <div class="tools-grid">
-
-            <!-- 1. GOOGLE DORKING -->
-            <div class="tool-card">
-                <div class="tool-icon">🔍</div>
-                <h3>GOOGLE DORKING</h3>
-                <p>Use advanced search operators to discover hidden pages, files, and sensitive information.</p>
-                <div class="tool-demo">
-                    <input type="text" id="dorkInput" placeholder='site:example.com intitle:"login"' class="cyber-input">
-                    <button onclick="runDork()" class="cyber-btn">▶ EXECUTE</button>
-                    <div id="dorkResult" class="result-box"></div>
+        <!-- ====== FOOTER ====== -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-brand">⚡ MK CYBER HUB</div>
+                <p class="footer-motto">Truth · Integrity · Justice</p>
+                <p>⚠️ OSINT is about using publicly available information responsibly.</p>
+                <div class="footer-social">
+                    <a href="#" class="footer-link">🐦</a>
+                    <a href="#" class="footer-link">💻</a>
+                    <a href="#" class="footer-link">🔗</a>
+                    <a href="#" class="footer-link">📧</a>
                 </div>
-                <span class="badge">🏆 Best for: Finding hidden content</span>
+                <div class="footer-glow">© 2026 MK Cyber Hub — Global Cyber Intelligence</div>
             </div>
+        </footer>
 
-            <!-- 2. SHODAN -->
-            <div class="tool-card">
-                <div class="tool-icon">🌐</div>
-                <h3>SHODAN</h3>
-                <p>Search internet-connected devices and exposed services.</p>
-                <div class="tool-demo">
-                    <input type="text" id="shodanInput" placeholder='apache port:80' class="cyber-input">
-                    <button onclick="runShodan()" class="cyber-btn">▶ EXECUTE</button>
-                    <div id="shodanResult" class="result-box"></div>
-                </div>
-                <span class="badge">🏆 Best for: Exposed devices & ports</span>
-            </div>
-
-            <!-- 3. CENSYS -->
-            <div class="tool-card">
-                <div class="tool-icon">📡</div>
-                <h3>CENSYS</h3>
-                <p>Explore internet-facing hosts, certificates, and network infrastructure.</p>
-                <div class="tool-demo">
-                    <input type="text" id="censysInput" placeholder='example.com' class="cyber-input">
-                    <button onclick="runCensys()" class="cyber-btn">▶ EXECUTE</button>
-                    <div id="censysResult" class="result-box"></div>
-                </div>
-                <span class="badge">🏆 Best for: Attack surface mapping</span>
-            </div>
-
-            <!-- 4. THEHARVESTER -->
-            <div class="tool-card">
-                <div class="tool-icon">📧</div>
-                <h3>THEHARVESTER</h3>
-                <p>Gather emails, subdomains, hosts, and other public information about a domain.</p>
-                <div class="tool-demo">
-                    <input type="text" id="harvestInput" placeholder='example.com' class="cyber-input">
-                    <button onclick="runHarvester()" class="cyber-btn">▶ EXECUTE</button>
-                    <div id="harvestResult" class="result-box"></div>
-                </div>
-                <span class="badge">🏆 Best for: Email harvesting</span>
-            </div>
-
-            <!-- 5. SPIDERFOOT -->
-            <div class="tool-card">
-                <div class="tool-icon">🕷️</div>
-                <h3>SPIDERFOOT</h3>
-                <p>Automate OSINT collection from multiple public data sources.</p>
-                <div class="tool-demo">
-                    <input type="text" id="spiderInput" placeholder='target.com' class="cyber-input">
-                    <button onclick="runSpiderfoot()" class="cyber-btn">▶ EXECUTE</button>
-                    <div id="spiderResult" class="result-box"></div>
-                </div>
-                <span class="badge">🏆 Best for: Automated recon</span>
-            </div>
-
-            <!-- 6. MALTEGO -->
-            <div class="tool-card">
-                <div class="tool-icon">🕸️</div>
-                <h3>MALTEGO</h3>
-                <p>Visualize relationships between people, domains, emails, and organizations.</p>
-                <div class="tool-demo">
-                    <input type="text" id="maltegoInput" placeholder='company name' class="cyber-input">
-                    <button onclick="runMaltego()" class="cyber-btn">▶ EXECUTE</button>
-                    <div id="maltegoResult" class="result-box"></div>
-                </div>
-                <span class="badge">🏆 Best for: Link analysis</span>
-            </div>
-
-            <!-- 7. WHOIS -->
-            <div class="tool-card">
-                <div class="tool-icon">📋</div>
-                <h3>WHOIS LOOKUP</h3>
-                <p>Find domain registration details, ownership info, nameservers, and more.</p>
-                <div class="tool-demo">
-                    <input type="text" id="whoisInput" placeholder='example.com' class="cyber-input">
-                    <button onclick="runWhois()" class="cyber-btn">▶ EXECUTE</button>
-                    <div id="whoisResult" class="result-box"></div>
-                </div>
-                <span class="badge">🏆 Best for: Domain ownership data</span>
-            </div>
-
-            <!-- 8. VIRUSTOTAL -->
-            <div class="tool-card">
-                <div class="tool-icon">🦠</div>
-                <h3>VIRUSTOTAL</h3>
-                <p>Analyze files, URLs, and domains using multiple security engines.</p>
-                <div class="tool-demo">
-                    <input type="text" id="vtInput" placeholder='https://example.com' class="cyber-input">
-                    <button onclick="runVirusTotal()" class="cyber-btn">▶ EXECUTE</button>
-                    <div id="vtResult" class="result-box"></div>
-                </div>
-                <span class="badge">🏆 Best for: Malware detection</span>
-            </div>
-
-            <!-- 9. HAVE I BEEN PWNED -->
-            <div class="tool-card">
-                <div class="tool-icon">🔓</div>
-                <h3>HAVE I BEEN PWNED</h3>
-                <p>Check if an email address has appeared in known data breaches.</p>
-                <div class="tool-demo">
-                    <input type="email" id="pwnedInput" placeholder='you@example.com' class="cyber-input">
-                    <button onclick="runPwned()" class="cyber-btn">▶ EXECUTE</button>
-                    <div id="pwnedResult" class="result-box"></div>
-                </div>
-                <span class="badge">🏆 Best for: Breach detection</span>
-            </div>
-
-            <!-- 10. WAYBACK MACHINE -->
-            <div class="tool-card">
-                <div class="tool-icon">📜</div>
-                <h3>WAYBACK MACHINE</h3>
-                <p>View archived versions of websites to investigate historical changes.</p>
-                <div class="tool-demo">
-                    <input type="text" id="waybackInput" placeholder='example.com' class="cyber-input">
-                    <button onclick="runWayback()" class="cyber-btn">▶ EXECUTE</button>
-                    <div id="waybackResult" class="result-box"></div>
-                </div>
-                <span class="badge">🏆 Best for: Historical web data</span>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- ====== FOOTER ====== -->
-    <!-- ========================================================= -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">⚡ MK CYBER HUB</div>
-            <p class="footer-motto">Truth · Integrity · Justice</p>
-            <p>⚠️ <span class="glow-text">REMEMBER:</span> OSINT is about using publicly available information responsibly.</p>
-            <p>Always follow the law, respect privacy, and use these tools for <span class="highlight">research, security, and learning</span>.</p>
-            <div class="footer-social">
-                <a href="#" target="_blank" class="footer-link" title="Twitter">🐦</a>
-                <a href="#" target="_blank" class="footer-link" title="GitHub">💻</a>
-                <a href="#" target="_blank" class="footer-link" title="LinkedIn">🔗</a>
-                <a href="#" target="_blank" class="footer-link" title="YouTube">📺</a>
-                <a href="#" class="footer-link" title="Email">📧</a>
-            </div>
-            <div class="footer-glow">© 2026 MK Cyber Hub — Empowering People Through Truth, Technology & Awareness</div>
-        </div>
-    </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
