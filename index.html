@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>MK Cyber Hub — Global Cyber Intelligence</title>
     <link rel="stylesheet" href="style.css">
     <!-- Chart.js -->
@@ -21,11 +21,11 @@
         </div>
         <div class="top-bar-center">
             <span class="status-dot">🟢</span>
-            <span>SYSTEM ONLINE</span>
+            <span>ONLINE</span>
             <button onclick="toggleTheme()" class="theme-toggle">🌙</button>
         </div>
         <div class="top-bar-right">
-            <span id="currentDate">Sat, 18 Jul 2026</span>
+            <span id="currentDate">Sat, 18 Jul</span>
             <span id="currentTime">14:30:45</span>
         </div>
     </div>
@@ -47,7 +47,7 @@
                         <span class="hub">HUB</span>
                     </span>
                 </div>
-                <p class="brand-tagline">🌍 GLOBAL CYBER INTELLIGENCE • THREAT MONITORING</p>
+                <p class="brand-tagline">🌍 GLOBAL CYBER INTELLIGENCE</p>
             </div>
         </section>
 
@@ -67,7 +67,7 @@
             </div>
             <div class="stat-item">
                 <span class="stat-value" id="countries">189</span>
-                <span class="stat-label">Countries Monitored</span>
+                <span class="stat-label">Countries</span>
             </div>
         </section>
 
@@ -100,205 +100,191 @@
             </div>
         </section>
 
-        <!-- ====== 🌍 LIVE THREAT MAP ====== -->
+        <!-- ====== THREAT MAP ====== -->
         <section class="tools-section">
             <div class="tools-header">
                 <h2>🌍 LIVE THREAT MAP</h2>
                 <p class="tools-sub">REAL-TIME CYBER ATTACK VISUALIZATION</p>
             </div>
-            <div id="threatMap" style="height:300px;background:rgba(0,212,255,0.02);border-radius:12px;border:1px solid rgba(0,212,255,0.06);position:relative;overflow:hidden;">
-                <div id="mapAttacks" style="padding:15px;color:#99b0c0;font-size:0.9rem;">
+            <div id="threatMap">
+                <div id="mapAttacks">
                     🚨 Recent Attacks:<br>
-                    <span id="attackLog">Loading...</span>
+                    <span id="attackLog">Phishing domain — suspicious.com (IN)</span>
                 </div>
             </div>
         </section>
 
-        <!-- ====== 🤖 AI THREAT ANALYZER ====== -->
+        <!-- ====== AI THREAT ANALYZER ====== -->
         <section class="tools-section">
             <div class="tools-header">
                 <h2>🤖 AI THREAT ANALYZER</h2>
                 <p class="tools-sub">AI-POWERED CYBER THREAT ANALYSIS</p>
             </div>
-            <div class="tools-grid" style="grid-template-columns:1fr;">
-                <div class="tool-card" style="max-width:600px;margin:0 auto;">
-                    <div class="tool-icon">🧠</div>
-                    <h3>AI THREAT ANALYSIS</h3>
-                    <p>AI से साइबर थ्रेट का विश्लेषण करें</p>
-                    <div class="tool-demo">
-                        <input type="text" id="aiInput" placeholder='Enter IP or Domain (e.g., 8.8.8.8)' class="cyber-input">
-                        <button onclick="runAIAnalysis()" class="cyber-btn">🤖 ANALYZE</button>
-                        <div id="aiResult" class="result-box"></div>
-                    </div>
+            <div class="tool-card" style="max-width:100%;">
+                <div class="tool-icon">🧠</div>
+                <h3>AI THREAT ANALYSIS</h3>
+                <p>AI से साइबर थ्रेट का विश्लेषण करें</p>
+                <div class="tool-demo">
+                    <input type="text" id="aiInput" placeholder='Enter IP or Domain' class="cyber-input">
+                    <button onclick="runAIAnalysis()" class="cyber-btn">🤖 ANALYZE</button>
+                    <div id="aiResult" class="result-box"></div>
                 </div>
             </div>
         </section>
 
-        <!-- ====== 🕵️ DARK WEB MONITOR ====== -->
+        <!-- ====== DARK WEB MONITOR ====== -->
         <section class="tools-section">
             <div class="tools-header">
                 <h2>🕵️ DARK WEB MONITOR</h2>
                 <p class="tools-sub">CHECK IF YOUR DATA HAS BEEN LEAKED</p>
             </div>
-            <div class="tools-grid" style="grid-template-columns:1fr;">
-                <div class="tool-card" style="max-width:600px;margin:0 auto;">
-                    <div class="tool-icon">🔓</div>
-                    <h3>BREACH CHECK</h3>
-                    <p>Check if your email or domain appears in data breaches</p>
-                    <div class="tool-demo">
-                        <input type="email" id="darkWebInput" placeholder='Enter email or domain' class="cyber-input">
-                        <button onclick="runDarkWebMonitor()" class="cyber-btn">🔍 CHECK</button>
-                        <div id="darkWebResult" class="result-box"></div>
-                    </div>
+            <div class="tool-card" style="max-width:100%;">
+                <div class="tool-icon">🔓</div>
+                <h3>BREACH CHECK</h3>
+                <p>Check if your email appears in data breaches</p>
+                <div class="tool-demo">
+                    <input type="email" id="darkWebInput" placeholder='Enter email' class="cyber-input">
+                    <button onclick="runDarkWebMonitor()" class="cyber-btn">🔍 CHECK</button>
+                    <div id="darkWebResult" class="result-box"></div>
                 </div>
             </div>
         </section>
 
-        <!-- ====== 📰 CYBER NEWS FEED ====== -->
+        <!-- ====== CYBER NEWS ====== -->
         <section class="tools-section">
             <div class="tools-header">
-                <h2>📰 CYBER NEWS FEED</h2>
+                <h2>📰 CYBER NEWS</h2>
                 <p class="tools-sub">LATEST CYBERSECURITY NEWS</p>
             </div>
-            <div id="newsFeed" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px;">
-                <div class="news-card" style="background:rgba(0,212,255,0.02);border:1px solid rgba(0,212,255,0.04);border-radius:12px;padding:15px;">
+            <div id="newsFeed">
+                <div class="news-card">
                     <span style="color:#00d4ff;">📌</span>
-                    <h4 style="color:#e0e8f0;font-size:0.95rem;">Ransomware Attack Hits Major Hospital</h4>
-                    <p style="color:#7788a0;font-size:0.8rem;">Patient data compromised in latest attack</p>
-                    <span style="color:#556677;font-size:0.7rem;">2 hours ago</span>
+                    <h4>Ransomware Attack Hits Hospital</h4>
+                    <p>Patient data compromised</p>
+                    <span>2 hours ago</span>
                 </div>
-                <div class="news-card" style="background:rgba(0,212,255,0.02);border:1px solid rgba(0,212,255,0.04);border-radius:12px;padding:15px;">
+                <div class="news-card">
                     <span style="color:#00d4ff;">📌</span>
-                    <h4 style="color:#e0e8f0;font-size:0.95rem;">New Zero-Day Vulnerability Discovered</h4>
-                    <p style="color:#7788a0;font-size:0.8rem;">Millions of devices at risk</p>
-                    <span style="color:#556677;font-size:0.7rem;">5 hours ago</span>
+                    <h4>New Zero-Day Vulnerability</h4>
+                    <p>Millions of devices at risk</p>
+                    <span>5 hours ago</span>
                 </div>
-                <div class="news-card" style="background:rgba(0,212,255,0.02);border:1px solid rgba(0,212,255,0.04);border-radius:12px;padding:15px;">
+                <div class="news-card">
                     <span style="color:#00d4ff;">📌</span>
-                    <h4 style="color:#e0e8f0;font-size:0.95rem;">AI-Powered Phishing Attacks on Rise</h4>
-                    <p style="color:#7788a0;font-size:0.8rem;">Cybercriminals using AI to craft convincing emails</p>
-                    <span style="color:#556677;font-size:0.7rem;">8 hours ago</span>
+                    <h4>AI-Powered Phishing on Rise</h4>
+                    <p>Cybercriminals using AI</p>
+                    <span>8 hours ago</span>
                 </div>
             </div>
         </section>
 
-        <!-- ====== 📊 ANALYTICS DASHBOARD ====== -->
+        <!-- ====== CHARTS ====== -->
         <section class="tools-section">
             <div class="tools-header">
                 <h2>📊 THREAT ANALYTICS</h2>
                 <p class="tools-sub">VISUALIZE CYBER THREAT DATA</p>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:900px;margin:0 auto;">
-                <div style="background:rgba(0,212,255,0.02);border:1px solid rgba(0,212,255,0.04);border-radius:12px;padding:15px;">
-                    <canvas id="threatChart" height="200"></canvas>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <canvas id="threatChart"></canvas>
                 </div>
-                <div style="background:rgba(0,212,255,0.02);border:1px solid rgba(0,212,255,0.04);border-radius:12px;padding:15px;">
-                    <canvas id="attackChart" height="200"></canvas>
+                <div class="chart-card">
+                    <canvas id="attackChart"></canvas>
                 </div>
             </div>
         </section>
 
-        <!-- ====== 🎮 CTF CHALLENGES ====== -->
+        <!-- ====== CTF CHALLENGES ====== -->
         <section class="tools-section">
             <div class="tools-header">
                 <h2>🎮 CTF CHALLENGES</h2>
-                <p class="tools-sub">CAPTURE THE FLAG — SECURITY CHALLENGES</p>
+                <p class="tools-sub">CAPTURE THE FLAG</p>
             </div>
-            <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+            <div class="tools-grid">
                 <div class="tool-card">
                     <div class="tool-icon">🏴</div>
                     <h3>WEB EXPLOITATION</h3>
-                    <p>Find the flag in this vulnerable web app</p>
                     <button onclick="startCTF('web')" class="cyber-btn">▶ START</button>
                     <div id="ctfWebResult" class="result-box"></div>
                 </div>
                 <div class="tool-card">
                     <div class="tool-icon">🔐</div>
                     <h3>CRYPTO CHALLENGE</h3>
-                    <p>Decrypt the message to find the flag</p>
                     <button onclick="startCTF('crypto')" class="cyber-btn">▶ START</button>
                     <div id="ctfCryptoResult" class="result-box"></div>
                 </div>
                 <div class="tool-card">
                     <div class="tool-icon">🕵️</div>
                     <h3>OSINT CHALLENGE</h3>
-                    <p>Use OSINT to find the hidden flag</p>
                     <button onclick="startCTF('osint')" class="cyber-btn">▶ START</button>
                     <div id="ctfOsintResult" class="result-box"></div>
                 </div>
             </div>
         </section>
 
-        <!-- ====== 🎤 VOICE COMMANDS ====== -->
+        <!-- ====== VOICE COMMANDS ====== -->
         <section class="tools-section">
             <div class="tools-header">
                 <h2>🎤 VOICE COMMANDS</h2>
-                <p class="tools-sub">CONTROL OSINT TOOLS WITH YOUR VOICE</p>
+                <p class="tools-sub">CONTROL WITH YOUR VOICE</p>
             </div>
-            <div style="max-width:400px;margin:0 auto;text-align:center;">
-                <button onclick="startVoiceCommand()" class="cyber-btn" style="font-size:1.2rem;padding:15px 30px;">🎤 TALK</button>
-                <div id="voiceResult" class="result-box" style="margin-top:10px;">Click the button and speak a command</div>
+            <div style="max-width:100%;text-align:center;">
+                <button onclick="startVoiceCommand()" class="cyber-btn" style="font-size:1rem;padding:12px 25px;">🎤 TALK</button>
+                <div id="voiceResult" class="result-box" style="margin-top:10px;">Click and speak a command</div>
             </div>
         </section>
 
-        <!-- ====== 🛡️ WEBSITE SECURITY SCANNER ====== -->
+        <!-- ====== WEBSITE SECURITY SCANNER ====== -->
         <section class="tools-section">
             <div class="tools-header">
-                <h2>🛡️ WEBSITE SECURITY SCANNER</h2>
+                <h2>🛡️ SECURITY SCANNER</h2>
                 <p class="tools-sub">SCAN WEBSITE FOR VULNERABILITIES</p>
             </div>
-            <div style="max-width:600px;margin:0 auto;">
-                <div class="tool-card">
-                    <div class="tool-icon">🛡️</div>
-                    <h3>SECURITY SCAN</h3>
-                    <p>Check SSL, headers, and open ports</p>
-                    <div class="tool-demo">
-                        <input type="text" id="scanInput" placeholder='https://example.com' class="cyber-input">
-                        <button onclick="runSecurityScan()" class="cyber-btn">🛡️ SCAN</button>
-                        <div id="scanResult" class="result-box"></div>
-                    </div>
+            <div class="tool-card" style="max-width:100%;">
+                <div class="tool-icon">🛡️</div>
+                <h3>SECURITY SCAN</h3>
+                <div class="tool-demo">
+                    <input type="text" id="scanInput" placeholder='https://example.com' class="cyber-input">
+                    <button onclick="runSecurityScan()" class="cyber-btn">🛡️ SCAN</button>
+                    <div id="scanResult" class="result-box"></div>
                 </div>
             </div>
         </section>
 
-        <!-- ====== 📜 INCIDENT RESPONSE ====== -->
+        <!-- ====== INCIDENT RESPONSE ====== -->
         <section class="tools-section">
             <div class="tools-header">
                 <h2>📜 INCIDENT RESPONSE</h2>
-                <p class="tools-sub">STEP-BY-STEP CYBER INCIDENT GUIDES</p>
+                <p class="tools-sub">STEP-BY-STEP GUIDES</p>
             </div>
-            <div class="tools-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+            <div class="tools-grid">
                 <div class="tool-card" onclick="showGuide('ransomware')" style="cursor:pointer;">
                     <div class="tool-icon">💀</div>
                     <h3>RANSOMWARE</h3>
-                    <p>How to respond to a ransomware attack</p>
                 </div>
                 <div class="tool-card" onclick="showGuide('phishing')" style="cursor:pointer;">
                     <div class="tool-icon">🎣</div>
                     <h3>PHISHING</h3>
-                    <p>How to handle a phishing attack</p>
                 </div>
                 <div class="tool-card" onclick="showGuide('breach')" style="cursor:pointer;">
                     <div class="tool-icon">🔓</div>
                     <h3>DATA BREACH</h3>
-                    <p>How to respond to a data breach</p>
                 </div>
             </div>
-            <div id="guideResult" class="result-box" style="max-width:800px;margin:15px auto;padding:15px;">Click a card to view the response guide</div>
+            <div id="guideResult" class="result-box" style="max-width:100%;margin:10px auto;padding:12px;">Click a card to view guide</div>
         </section>
 
-        <!-- ====== 📦 OSINT TOOLS ====== -->
+        <!-- ====== OSINT TOOLS ====== -->
         <section class="tools-section">
             <div class="tools-header">
                 <h2>🛸 TOP 10 OSINT TOOLS</h2>
-                <p class="tools-sub">REAL-TIME INTELLIGENCE GATHERING</p>
+                <p class="tools-sub">REAL-TIME INTELLIGENCE</p>
             </div>
             <div class="tools-grid">
                 <!-- Tool 1 -->
                 <div class="tool-card">
                     <div class="tool-icon">🔍</div>
                     <h3>GOOGLE DORKING</h3>
-                    <p>Find hidden pages and sensitive data.</p>
                     <div class="tool-demo">
                         <input type="text" id="dorkInput" placeholder='site:example.com' class="cyber-input">
                         <button onclick="runDork()" class="cyber-btn">▶ EXECUTE</button>
@@ -309,7 +295,6 @@
                 <div class="tool-card">
                     <div class="tool-icon">🌐</div>
                     <h3>SHODAN</h3>
-                    <p>Search internet-connected devices.</p>
                     <div class="tool-demo">
                         <input type="text" id="shodanInput" placeholder='apache port:80' class="cyber-input">
                         <button onclick="runShodan()" class="cyber-btn">▶ EXECUTE</button>
@@ -320,7 +305,6 @@
                 <div class="tool-card">
                     <div class="tool-icon">📡</div>
                     <h3>CENSYS</h3>
-                    <p>Explore network infrastructure.</p>
                     <div class="tool-demo">
                         <input type="text" id="censysInput" placeholder='example.com' class="cyber-input">
                         <button onclick="runCensys()" class="cyber-btn">▶ EXECUTE</button>
@@ -331,7 +315,6 @@
                 <div class="tool-card">
                     <div class="tool-icon">📧</div>
                     <h3>THEHARVESTER</h3>
-                    <p>Gather emails and subdomains.</p>
                     <div class="tool-demo">
                         <input type="text" id="harvestInput" placeholder='example.com' class="cyber-input">
                         <button onclick="runHarvester()" class="cyber-btn">▶ EXECUTE</button>
@@ -342,7 +325,6 @@
                 <div class="tool-card">
                     <div class="tool-icon">🕷️</div>
                     <h3>SPIDERFOOT</h3>
-                    <p>Automate OSINT collection.</p>
                     <div class="tool-demo">
                         <input type="text" id="spiderInput" placeholder='target.com' class="cyber-input">
                         <button onclick="runSpiderfoot()" class="cyber-btn">▶ EXECUTE</button>
@@ -353,7 +335,6 @@
                 <div class="tool-card">
                     <div class="tool-icon">🕸️</div>
                     <h3>MALTEGO</h3>
-                    <p>Visualize relationships.</p>
                     <div class="tool-demo">
                         <input type="text" id="maltegoInput" placeholder='company name' class="cyber-input">
                         <button onclick="runMaltego()" class="cyber-btn">▶ EXECUTE</button>
@@ -364,7 +345,6 @@
                 <div class="tool-card">
                     <div class="tool-icon">📋</div>
                     <h3>WHOIS</h3>
-                    <p>Domain ownership data.</p>
                     <div class="tool-demo">
                         <input type="text" id="whoisInput" placeholder='example.com' class="cyber-input">
                         <button onclick="runWhois()" class="cyber-btn">▶ EXECUTE</button>
@@ -375,7 +355,6 @@
                 <div class="tool-card">
                     <div class="tool-icon">🦠</div>
                     <h3>VIRUSTOTAL</h3>
-                    <p>Malware detection.</p>
                     <div class="tool-demo">
                         <input type="text" id="vtInput" placeholder='https://example.com' class="cyber-input">
                         <button onclick="runVirusTotal()" class="cyber-btn">▶ EXECUTE</button>
@@ -386,7 +365,6 @@
                 <div class="tool-card">
                     <div class="tool-icon">🔓</div>
                     <h3>HAVE I BEEN PWNED</h3>
-                    <p>Check data breaches.</p>
                     <div class="tool-demo">
                         <input type="email" id="pwnedInput" placeholder='you@example.com' class="cyber-input">
                         <button onclick="runPwned()" class="cyber-btn">▶ EXECUTE</button>
@@ -397,24 +375,12 @@
                 <div class="tool-card">
                     <div class="tool-icon">📜</div>
                     <h3>WAYBACK</h3>
-                    <p>Historical web data.</p>
                     <div class="tool-demo">
                         <input type="text" id="waybackInput" placeholder='example.com' class="cyber-input">
                         <button onclick="runWayback()" class="cyber-btn">▶ EXECUTE</button>
                         <div id="waybackResult" class="result-box"></div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- ====== 📱 PWA INSTALL ====== -->
-        <section class="tools-section" id="pwaInstall" style="display:none;">
-            <div class="tools-header">
-                <h2>📱 INSTALL APP</h2>
-                <p class="tools-sub">INSTALL MK CYBER HUB AS A MOBILE APP</p>
-            </div>
-            <div style="max-width:400px;margin:0 auto;text-align:center;">
-                <button onclick="installPWA()" class="cyber-btn" style="font-size:1rem;padding:15px 30px;">📲 INSTALL APP</button>
             </div>
         </section>
 
@@ -430,7 +396,7 @@
                     <a href="#" class="footer-link">🔗</a>
                     <a href="#" class="footer-link">📧</a>
                 </div>
-                <div class="footer-glow">© 2026 MK Cyber Hub — Global Cyber Intelligence</div>
+                <div class="footer-glow">© 2026 MK Cyber Hub</div>
             </div>
         </footer>
 
