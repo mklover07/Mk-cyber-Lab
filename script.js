@@ -1,4 +1,97 @@
 // ============================================================
+// 🌤️ WEATHER — Free API (No Key Required)
+// ============================================================
+async function getWeather() {
+    const tempElem = document.getElementById('weatherTemp');
+    const cityElem = document.getElementById('weatherCity');
+    const iconElem = document.querySelector('.weather-icon');
+
+    try {
+        // User's location based on IP (Free API)
+        const ipResponse = await fetch('https://ipapi.co/json/');
+        const ipData = await ipResponse.json();
+        const city = ipData.city || 'New Delhi';
+        const region = ipData.region || 'Delhi';
+        const country = ipData.country_name || 'India';
+
+        // Weather API (Free — No API Key Required)
+        const weatherResponse = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${ipData.latitude || 28.6139}&longitude=${ipData.longitude || 77.2090}&current_weather=true&timezone=auto`
+        );
+        const weatherData = await weatherResponse.json();
+
+        if (weatherData.current_weather) {
+            const temp = weatherData.current_weather.temperature;
+            const weatherCode = weatherData.current_weather.weathercode;
+            
+            // Weather Icon based on code
+            const icons = {
+                0: '☀️', 1: '🌤️', 2: '⛅', 3: '☁️',
+                45: '🌫️', 48: '🌫️',
+                51: '🌦️', 53: '🌦️', 55: '🌧️',
+                61: '🌧️', 63: '🌧️', 65: '⛈️',
+                71: '❄️', 73: '❄️', 75: '❄️',
+                80: '🌧️', 81: '🌧️', 82: '⛈️',
+                95: '⛈️', 96: '⛈️', 99: '⛈️'
+            };
+            
+            const icon = icons[weatherCode] || '🌤️';
+            iconElem.textContent = icon;
+            tempElem.textContent = `${Math.round(temp)}°C`;
+            cityElem.textContent = `${city}, ${country}`;
+        } else {
+            fallbackWeather(cityElem, tempElem, iconElem, city);
+        }
+    } catch (error) {
+        fallbackWeather(cityElem, tempElem, iconElem);
+    }
+}
+
+function fallbackWeather(cityElem, tempElem, iconElem, city = 'Unknown') {
+    iconElem.textContent = '🌤️';
+    tempElem.textContent = '--°C';
+    cityElem.textContent = 'Loading...';
+    
+    // Try again after 10 seconds
+    setTimeout(getWeather, 10000);
+}
+
+// ============================================================
+// 🕐 CLOCK — Real-Time Time + Date
+// ============================================================
+function updateClock() {
+    const now = new Date();
+    
+    // Time
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('currentTime').textContent = `${hours}:${minutes}:${seconds}`;
+    
+    // Date
+    const options = { 
+        weekday: 'short', 
+        day: 'numeric', 
+        month: 'short', 
+        year: 'numeric' 
+    };
+    document.getElementById('currentDate').textContent = now.toLocaleDateString('en-IN', options);
+}
+
+// ============================================================
+// 🚀 INIT
+// ============================================================
+// Weather on load
+getWeather();
+
+// Clock update every second
+updateClock();
+setInterval(updateClock, 1000);
+
+// Refresh weather every 5 minutes
+setInterval(getWeather, 300000);
+
+// ============================================================
 // 🔑 API KEYS — आपको खुद Register करके भरने हैं
 // ============================================================
 const API_KEYS = {
