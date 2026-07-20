@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>MK Cyber Hub — Global Cyber Intelligence</title>
+    <title>MK Cyber Hub — Cyber Intelligence + FIFA World Cup</title>
     <link rel="stylesheet" href="style.css">
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -33,7 +33,9 @@
     <!-- ====== 3D GLOBE ====== -->
     <div id="globe-container"></div>
 
+    <!-- ========================================================= -->
     <!-- ====== OVERLAY CONTENT ====== -->
+    <!-- ========================================================= -->
     <div class="overlay-content">
 
         <!-- ====== BRANDING ====== -->
@@ -47,7 +49,7 @@
                         <span class="hub">HUB</span>
                     </span>
                 </div>
-                <p class="brand-tagline">🌍 GLOBAL CYBER INTELLIGENCE</p>
+                <p class="brand-tagline">🌍 CYBER INTELLIGENCE • THREAT MONITORING • FIFA WORLD CUP</p>
             </div>
         </section>
 
@@ -68,35 +70,6 @@
             <div class="stat-item">
                 <span class="stat-value" id="countries">189</span>
                 <span class="stat-label">Countries</span>
-            </div>
-        </section>
-
-        <!-- ====== ABOUT ====== -->
-        <section class="about-section">
-            <div class="about-box">
-                <div class="about-avatar">👨‍💼</div>
-                <div class="about-text">
-                    <h2>MANOJ MEENA</h2>
-                    <p class="position">Founder, MK Cyber Hub</p>
-                    <div class="identity-tags">
-                        <span>🛡️ Cyber Crime Analyst</span>
-                        <span>📰 Investigative Journalist</span>
-                        <span>🔍 Digital Fraud Investigator</span>
-                        <span>⚕️ Healthcare Professional</span>
-                    </div>
-                    <p class="bio">
-                        <strong>Manoj Meena</strong> is the Founder of <strong>MK Cyber Hub</strong>, 
-                        dedicated to <span class="glow-text">global cyber security</span>, 
-                        <span class="glow-text">digital fraud investigation</span>, and 
-                        <span class="glow-text">public awareness</span>.
-                    </p>
-                    <div class="about-social">
-                        <a href="#" class="social-link">🐦 Twitter</a>
-                        <a href="#" class="social-link">💻 GitHub</a>
-                        <a href="#" class="social-link">🔗 LinkedIn</a>
-                        <a href="#" class="social-link">📧 Email</a>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -384,19 +357,144 @@
             </div>
         </section>
 
+        <!-- ========================================================= -->
+        <!-- ====== ⚽ FIFA WORLD CUP LIVE UPDATES ====== -->
+        <!-- ========================================================= -->
+        <section class="tools-section fifa-section">
+            <div class="tools-header">
+                <h2>⚽ FIFA WORLD CUP 2026</h2>
+                <p class="tools-sub">LIVE UPDATES • SCORES • NEWS</p>
+            </div>
+
+            <!-- FIFA Stats -->
+            <div class="fifa-stats">
+                <div class="fifa-stat">
+                    <span class="fifa-stat-value" id="matchesPlayed">48</span>
+                    <span class="fifa-stat-label">Matches Played</span>
+                </div>
+                <div class="fifa-stat">
+                    <span class="fifa-stat-value" id="goalsScored">124</span>
+                    <span class="fifa-stat-label">Goals Scored</span>
+                </div>
+                <div class="fifa-stat">
+                    <span class="fifa-stat-value" id="topScorer">Mbappé (7)</span>
+                    <span class="fifa-stat-label">Top Scorer</span>
+                </div>
+                <div class="fifa-stat">
+                    <span class="fifa-stat-value" id="nextMatch">France vs Brazil</span>
+                    <span class="fifa-stat-label">Next Match</span>
+                </div>
+            </div>
+
+            <!-- Live Matches -->
+            <div class="fifa-matches">
+                <h3>🔴 LIVE MATCHES</h3>
+                <div id="liveMatches">
+                    <div class="match-card">
+                        <div class="match-teams">
+                            <span class="team">🇦🇷 Argentina</span>
+                            <span class="score">2 - 1</span>
+                            <span class="team">🇫🇷 France</span>
+                        </div>
+                        <div class="match-time">⏱️ 78' • 2nd Half</div>
+                    </div>
+                    <div class="match-card">
+                        <div class="match-teams">
+                            <span class="team">🇧🇷 Brazil</span>
+                            <span class="score">3 - 0</span>
+                            <span class="team">🇵🇹 Portugal</span>
+                        </div>
+                        <div class="match-time">⏱️ 62' • 2nd Half</div>
+                    </div>
+                    <div class="match-card">
+                        <div class="match-teams">
+                            <span class="team">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</span>
+                            <span class="score">1 - 1</span>
+                            <span class="team">🇩🇪 Germany</span>
+                        </div>
+                        <div class="match-time">⏱️ 45' • Half Time</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FIFA News -->
+            <div class="fifa-news">
+                <h3>📰 FIFA NEWS</h3>
+                <div id="fifaNews">
+                    <div class="fifa-news-card">
+                        <span class="news-badge">BREAKING</span>
+                        <h4>Mbappé scores hat-trick in quarter-final</h4>
+                        <p>France advances to semi-finals with 4-2 win</p>
+                        <span class="news-time">15 min ago</span>
+                    </div>
+                    <div class="fifa-news-card">
+                        <span class="news-badge">UPDATE</span>
+                        <h4>Brazil dominates Portugal 3-0</h4>
+                        <p>Neymar Jr. leads Brazil to semi-finals</p>
+                        <span class="news-time">45 min ago</span>
+                    </div>
+                    <div class="fifa-news-card">
+                        <span class="news-badge">INJURY</span>
+                        <h4>Key player injured in warm-up</h4>
+                        <p>Star midfielder ruled out for the tournament</p>
+                        <span class="news-time">1 hour ago</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- ====== 👨‍💼 MANOJ MEENA SECTION (नीचे) ====== -->
+        <!-- ========================================================= -->
+        <section class="manoj-section">
+            <div class="manoj-container">
+                <div class="manoj-card">
+                    <div class="manoj-avatar">
+                        <img src="https://ui-avatars.com/api/?name=Manoj+Meena&size=120&background=00d4ff&color=fff&bold=true" alt="Manoj Meena" class="manoj-img">
+                    </div>
+                    <div class="manoj-info">
+                        <h2>👨‍💼 MANOJ MEENA</h2>
+                        <p class="manoj-title">Founder, MK Cyber Hub</p>
+                        <div class="manoj-tags">
+                            <span>🛡️ Cyber Crime Analyst</span>
+                            <span>📰 Investigative Journalist</span>
+                            <span>🔍 Digital Fraud Investigator</span>
+                            <span>⚕️ Healthcare Professional</span>
+                            <span>⚽ FIFA Analyst</span>
+                        </div>
+                        <p class="manoj-bio">
+                            <strong>Manoj Meena</strong> is the Founder of <strong>MK Cyber Hub</strong>, 
+                            dedicated to <span class="glow-text">global cyber security</span>, 
+                            <span class="glow-text">digital fraud investigation</span>, 
+                            <span class="glow-text">public awareness</span>, and 
+                            <span class="glow-text">FIFA World Cup analytics</span>.
+                        </p>
+                        <div class="manoj-social">
+                            <a href="#" class="social-link">🐦 Twitter</a>
+                            <a href="#" class="social-link">💻 GitHub</a>
+                            <a href="#" class="social-link">🔗 LinkedIn</a>
+                            <a href="#" class="social-link">📧 Email</a>
+                            <a href="#" class="social-link">⚽ FIFA Hub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- ====== FOOTER ====== -->
         <footer>
             <div class="footer-content">
                 <div class="footer-brand">⚡ MK CYBER HUB</div>
-                <p class="footer-motto">Truth · Integrity · Justice</p>
+                <p class="footer-motto">Truth · Integrity · Justice · Football</p>
                 <p>⚠️ OSINT is about using publicly available information responsibly.</p>
                 <div class="footer-social">
                     <a href="#" class="footer-link">🐦</a>
                     <a href="#" class="footer-link">💻</a>
                     <a href="#" class="footer-link">🔗</a>
                     <a href="#" class="footer-link">📧</a>
+                    <a href="#" class="footer-link">⚽</a>
                 </div>
-                <div class="footer-glow">© 2026 MK Cyber Hub</div>
+                <div class="footer-glow">© 2026 MK Cyber Hub — Cyber Intelligence + FIFA World Cup</div>
             </div>
         </footer>
 
