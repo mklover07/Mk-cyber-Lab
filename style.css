@@ -1,820 +1,311 @@
 /* ============================================================ */
-/* ====== MOBILE-FIRST CSS ====== */
+/* ====== FIFA WORLD CUP SECTION ====== */
 /* ============================================================ */
 
-/* ====== BASE ====== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+.fifa-section {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.02), rgba(255, 68, 204, 0.02));
+    border-top: 2px solid rgba(0, 212, 255, 0.05);
+    border-bottom: 2px solid rgba(0, 212, 255, 0.05);
+    padding: 15px 10px !important;
+    margin: 10px 0 !important;
 }
 
-body {
-    background: #060a14;
-    color: #e0e8f0;
-    min-height: 100vh;
-    overflow-x: hidden;
-    padding-top: 65px;
-    transition: background 0.3s, color 0.3s;
-    -webkit-tap-highlight-color: transparent;
-}
-
-body.light-mode {
-    background: #f0f4f8;
-    color: #1a2a3a;
-}
-
-/* ====== GLOBE ====== */
-#globe-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.08;
-}
-
-body.light-mode #globe-container {
-    opacity: 0.04;
-}
-
-/* ============================================================ */
-/* ====== TOP BAR (Mobile First) ====== */
-/* ============================================================ */
-
-.top-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 12px;
-    background: rgba(6, 10, 20, 0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0, 212, 255, 0.06);
-    gap: 4px;
-    flex-wrap: wrap;
-}
-
-body.light-mode .top-bar {
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.top-bar-left {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: #88b0c8;
-    font-size: 0.7rem;
-    flex-wrap: wrap;
-}
-
-.top-bar-left .weather-icon {
-    font-size: 0.9rem;
-}
-
-.top-bar-left #weatherTemp {
-    color: #00d4ff;
-    font-weight: 600;
-    font-size: 0.75rem;
-}
-
-.top-bar-left #weatherCity {
-    color: #8899aa;
-    font-size: 0.65rem;
-    display: none;
-}
-
-.top-bar-center {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: #44dd88;
-    font-size: 0.6rem;
-    letter-spacing: 1px;
-    font-weight: 600;
-}
-
-.status-dot {
-    font-size: 0.6rem;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-}
-
-.theme-toggle {
-    background: none;
-    border: 1px solid rgba(0, 212, 255, 0.1);
-    border-radius: 50%;
-    color: #88b0c8;
-    cursor: pointer;
-    font-size: 0.7rem;
-    padding: 2px 6px;
-    transition: all 0.3s;
-}
-
-.top-bar-right {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: #00d4ff;
-    font-size: 0.65rem;
-}
-
-.top-bar-right #currentDate {
-    color: #8899aa;
-    font-size: 0.6rem;
-    padding-right: 6px;
-    border-right: 1px solid rgba(0, 212, 255, 0.06);
-}
-
-.top-bar-right #currentTime {
-    font-weight: 600;
-    font-family: 'Courier New', monospace;
-    font-size: 0.7rem;
-}
-
-/* ====== OVERLAY ====== */
-.overlay-content {
-    position: relative;
-    z-index: 1;
-    padding: 0 10px;
-}
-
-/* ============================================================ */
-/* ====== BRANDING (Mobile First) ====== */
-/* ============================================================ */
-
-.hero-brand {
-    text-align: center;
-    padding: 15px 10px 5px;
-}
-
-.brand-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-}
-
-.logo-icon {
-    font-size: 1.8rem;
-}
-
-.logo-text {
-    font-size: 1.8rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
-.logo-text .mk { color: #ff44cc; }
-.logo-text .cyber-brand { color: #00d4ff; }
-.logo-text .hub { color: #ffffff; }
-
-body.light-mode .logo-text .hub { color: #1a2a3a; }
-
-.brand-tagline {
-    color: #556677;
-    font-size: 0.55rem;
-    letter-spacing: 2px;
-    margin-top: 2px;
-    font-weight: 300;
-}
-
-/* ============================================================ */
-/* ====== STATS (Mobile First) ====== */
-/* ============================================================ */
-
-.stats-bar {
+.fifa-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    padding: 10px 8px;
-    background: rgba(0, 212, 255, 0.02);
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.fifa-stat {
+    text-align: center;
+    background: rgba(0, 212, 255, 0.03);
     border: 1px solid rgba(0, 212, 255, 0.04);
     border-radius: 10px;
-    margin: 8px 0 10px;
+    padding: 10px 8px;
 }
 
-.stat-item {
-    text-align: center;
-    padding: 4px 0;
-}
-
-.stat-value {
+.fifa-stat-value {
     display: block;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    color: #00d4ff;
+    color: #ff44cc;
     font-family: 'Courier New', monospace;
 }
 
-.stat-label {
+.fifa-stat-label {
     font-size: 0.5rem;
     color: #556677;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-/* ============================================================ */
-/* ====== ABOUT (Mobile First) ====== */
-/* ============================================================ */
-
-.about-section {
-    margin: 0 auto;
+.fifa-matches {
+    margin: 12px 0;
 }
 
-.about-box {
+.fifa-matches h3 {
+    color: #00d4ff;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.match-card {
+    background: rgba(0, 212, 255, 0.02);
+    border: 1px solid rgba(0, 212, 255, 0.04);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+}
+
+.match-teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.team {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #e0e8f0;
+}
+
+.score {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #ff44cc;
+}
+
+.match-time {
+    font-size: 0.6rem;
+    color: #556677;
+    margin-top: 4px;
+}
+
+.fifa-news {
+    margin: 12px 0;
+}
+
+.fifa-news h3 {
+    color: #00d4ff;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.fifa-news-card {
+    background: rgba(0, 212, 255, 0.02);
+    border: 1px solid rgba(0, 212, 255, 0.04);
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+}
+
+.news-badge {
+    display: inline-block;
+    padding: 1px 8px;
+    background: #ff44cc;
+    color: #fff;
+    font-size: 0.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.fifa-news-card h4 {
+    color: #e0e8f0;
+    font-size: 0.8rem;
+    margin: 4px 0;
+}
+
+.fifa-news-card p {
+    color: #7788a0;
+    font-size: 0.7rem;
+    margin: 2px 0;
+}
+
+.fifa-news-card .news-time {
+    color: #556677;
+    font-size: 0.55rem;
+}
+
+/* ============================================================ */
+/* ====== MANOJ MEENA SECTION (नीचे) ====== */
+/* ============================================================ */
+
+.manoj-section {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.manoj-container {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.03), rgba(255, 68, 204, 0.03));
+    border: 1px solid rgba(0, 212, 255, 0.06);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.manoj-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background: rgba(0, 212, 255, 0.02);
-    border: 1px solid rgba(0, 212, 255, 0.04);
-    border-radius: 12px;
-    padding: 14px 16px;
-    gap: 10px;
+    gap: 15px;
 }
 
-.about-avatar {
-    font-size: 2.8rem;
+.manoj-avatar {
+    flex-shrink: 0;
 }
 
-.about-text h2 {
+.manoj-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #00d4ff;
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.manoj-img:hover {
+    transform: scale(1.05);
+    border-color: #ff44cc;
+    box-shadow: 0 0 50px rgba(255, 68, 204, 0.15);
+}
+
+.manoj-info h2 {
     color: #ffffff;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
 }
 
-body.light-mode .about-text h2 { color: #1a2a3a; }
-
-.about-text .position {
+.manoj-title {
     color: #00d4ff;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     opacity: 0.6;
+    margin-bottom: 6px;
 }
 
-.identity-tags {
+.manoj-tags {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 4px;
-    margin: 4px 0 6px;
+    gap: 6px;
+    margin: 8px 0 10px;
 }
 
-.identity-tags span {
-    padding: 2px 10px;
+.manoj-tags span {
+    padding: 3px 12px;
     border: 1px solid rgba(0, 212, 255, 0.06);
-    border-radius: 15px;
-    font-size: 0.55rem;
+    border-radius: 20px;
+    font-size: 0.65rem;
     color: #88b0c8;
 }
 
-.about-text .bio {
+.manoj-bio {
     color: #99b0c0;
-    font-size: 0.75rem;
-    line-height: 1.5;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.about-text .glow-text {
+.manoj-bio .glow-text {
     color: #ff44cc;
 }
 
-.about-social {
+.manoj-social {
     display: flex;
-    gap: 6px;
-    margin-top: 8px;
+    gap: 8px;
+    margin-top: 10px;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.social-link {
-    padding: 4px 12px;
+.manoj-social .social-link {
+    padding: 5px 14px;
     border: 1px solid rgba(0, 212, 255, 0.06);
-    border-radius: 20px;
+    border-radius: 25px;
     color: #88b0c8;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     text-decoration: none;
     transition: all 0.3s;
 }
 
-.social-link:hover {
+.manoj-social .social-link:hover {
     border-color: rgba(0, 212, 255, 0.15);
     color: #00d4ff;
 }
 
-/* ============================================================ */
-/* ====== TOOLS (Mobile First) ====== */
-/* ============================================================ */
+/* ====== RESPONSIVE ====== */
 
-.tools-section {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 8px 0;
+/* Tablet + Desktop */
+@media (min-width: 481px) {
+    .fifa-stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .fifa-stat-value {
+        font-size: 1.6rem;
+    }
+    .manoj-card {
+        flex-direction: row;
+        text-align: left;
+        gap: 25px;
+    }
+    .manoj-tags {
+        justify-content: flex-start;
+    }
+    .manoj-social {
+        justify-content: flex-start;
+    }
+    .manoj-bio {
+        margin: 0;
+    }
+    .manoj-img {
+        width: 120px;
+        height: 120px;
+    }
 }
 
-.tools-header {
-    text-align: center;
-    padding: 8px 0;
+@media (min-width: 769px) {
+    .fifa-section {
+        padding: 25px 30px !important;
+    }
+    .fifa-stat-value {
+        font-size: 2rem;
+    }
+    .manoj-container {
+        padding: 30px 35px;
+    }
+    .manoj-img {
+        width: 140px;
+        height: 140px;
+    }
+    .manoj-info h2 {
+        font-size: 2rem;
+    }
 }
 
-.tools-header h2 {
-    color: #ff44cc;
-    font-size: 1.2rem;
-    letter-spacing: 1px;
+/* ====== THEME TOGGLE SUPPORT ====== */
+body.light-mode .fifa-section {
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(255, 68, 204, 0.05));
 }
 
-.tools-header .tools-sub {
-    color: #00d4ff;
-    font-size: 0.5rem;
-    letter-spacing: 2px;
-    opacity: 0.5;
-}
-
-.tools-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    padding: 4px 0;
-}
-
-.tool-card {
-    background: rgba(6, 10, 20, 0.6);
-    border: 1px solid rgba(0, 212, 255, 0.04);
-    border-radius: 10px;
-    padding: 12px 10px;
-    transition: all 0.3s ease;
-}
-
-body.light-mode .tool-card {
+body.light-mode .manoj-container {
     background: rgba(255, 255, 255, 0.6);
 }
 
-.tool-card:hover {
-    border-color: rgba(0, 212, 255, 0.08);
-}
-
-.tool-icon {
-    font-size: 1.4rem;
-    text-align: center;
-    margin-bottom: 2px;
-}
-
-.tool-card h3 {
-    color: #00d4ff;
-    font-size: 0.7rem;
-    text-align: center;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid rgba(0, 212, 255, 0.04);
-    padding-bottom: 4px;
-    margin-bottom: 6px;
-}
-
-.tool-card p {
-    color: #7788a0;
-    font-size: 0.6rem;
-    text-align: center;
-    margin-bottom: 6px;
-    display: none;
-}
-
-.tool-demo {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.cyber-input {
-    padding: 6px 10px;
-    background: rgba(0, 212, 255, 0.03);
-    border: 1px solid rgba(0, 212, 255, 0.06);
-    border-radius: 6px;
-    color: #c0d8e8;
-    font-size: 0.65rem;
-    outline: none;
-    transition: all 0.3s;
-    width: 100%;
-}
-
-body.light-mode .cyber-input {
-    background: rgba(0, 0, 0, 0.03);
+body.light-mode .manoj-info h2 {
     color: #1a2a3a;
 }
 
-.cyber-input:focus {
-    border-color: rgba(0, 212, 255, 0.12);
+body.light-mode .team {
+    color: #1a2a3a;
 }
 
-.cyber-btn {
-    padding: 5px 8px;
-    background: rgba(0, 212, 255, 0.04);
-    border: 1px solid rgba(0, 212, 255, 0.06);
-    border-radius: 6px;
-    color: #00d4ff;
-    font-weight: 600;
-    font-size: 0.6rem;
-    cursor: pointer;
-    transition: all 0.3s;
-    letter-spacing: 1px;
-    width: 100%;
-}
-
-.cyber-btn:hover {
-    background: rgba(0, 212, 255, 0.08);
-}
-
-.result-box {
-    margin-top: 4px;
-    padding: 4px 8px;
-    min-height: 24px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
-    font-size: 0.55rem;
-    color: #44dd88;
-    border-left: 2px solid rgba(0, 212, 255, 0.06);
-    word-break: break-all;
-    max-height: 60px;
-    overflow-y: auto;
-    line-height: 1.4;
-}
-
-body.light-mode .result-box {
-    background: rgba(0, 0, 0, 0.05);
-}
-
-/* ====== THREAT MAP ====== */
-#threatMap {
-    background: rgba(0, 212, 255, 0.02);
-    border-radius: 10px;
-    border: 1px solid rgba(0, 212, 255, 0.04);
-    padding: 10px 12px;
-    margin: 4px 0;
-}
-
-#mapAttacks {
-    color: #99b0c0;
-    font-size: 0.7rem;
-}
-
-#mapAttacks #attackLog {
-    color: #ff44cc;
-    font-weight: 600;
-}
-
-/* ====== NEWS ====== */
-#newsFeed {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 8px;
-    margin: 4px 0;
-}
-
-.news-card {
-    background: rgba(0, 212, 255, 0.02);
-    border: 1px solid rgba(0, 212, 255, 0.04);
-    border-radius: 10px;
-    padding: 10px 12px;
-}
-
-.news-card h4 {
-    color: #e0e8f0;
-    font-size: 0.8rem;
-    margin: 2px 0;
-}
-
-.news-card p {
-    color: #7788a0;
-    font-size: 0.65rem;
-}
-
-.news-card span {
-    color: #556677;
-    font-size: 0.55rem;
-}
-
-/* ====== CHARTS ====== */
-.charts-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin: 4px 0;
-}
-
-.chart-card {
-    background: rgba(0, 212, 255, 0.02);
-    border: 1px solid rgba(0, 212, 255, 0.04);
-    border-radius: 10px;
-    padding: 8px 6px;
-}
-
-.chart-card canvas {
-    width: 100% !important;
-    height: 100px !important;
-}
-
-/* ============================================================ */
-/* ====== FOOTER (Mobile First) ====== */
-/* ============================================================ */
-
-footer {
-    text-align: center;
-    padding: 15px 12px 10px;
-    border-top: 1px solid rgba(0, 212, 255, 0.04);
-    margin-top: 10px;
-}
-
-.footer-brand {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 2px;
-}
-
-body.light-mode .footer-brand { color: #1a2a3a; }
-
-.footer-motto {
-    color: #ff44cc;
-    font-size: 0.65rem;
-    letter-spacing: 3px;
-    margin-bottom: 6px;
-    opacity: 0.4;
-}
-
-.footer-content p {
-    color: #556677;
-    font-size: 0.6rem;
-    margin: 3px 0;
-}
-
-.footer-social {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin: 6px 0 4px;
-}
-
-.footer-link {
-    font-size: 1rem;
-    text-decoration: none;
-    color: #556677;
-    transition: all 0.3s;
-}
-
-.footer-link:hover {
-    color: #00d4ff;
-}
-
-.footer-glow {
-    color: #445566;
-    font-size: 0.5rem;
-    letter-spacing: 1px;
-    opacity: 0.3;
-}
-
-/* ============================================================ */
-/* ====== RESPONSIVE BREAKPOINTS ====== */
-/* ============================================================ */
-
-/* Small phones (320px - 480px) - Already optimized above */
-
-/* Tablets & Larger Phones (481px - 768px) */
-@media (min-width: 481px) {
-    .top-bar {
-        padding: 10px 20px;
-    }
-    .top-bar-left #weatherCity {
-        display: inline;
-    }
-    .top-bar-left {
-        font-size: 0.8rem;
-        gap: 10px;
-    }
-    .top-bar-center {
-        font-size: 0.7rem;
-    }
-    .top-bar-right {
-        font-size: 0.8rem;
-    }
-
-    .stats-bar {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-        padding: 12px 16px;
-    }
-    .stat-value {
-        font-size: 1.8rem;
-    }
-    .stat-label {
-        font-size: 0.6rem;
-    }
-
-    .logo-text {
-        font-size: 2.4rem;
-    }
-    .logo-icon {
-        font-size: 2.4rem;
-    }
-
-    .about-box {
-        flex-direction: row;
-        text-align: left;
-        padding: 18px 22px;
-        gap: 20px;
-    }
-    .about-avatar {
-        font-size: 3.5rem;
-    }
-    .about-text h2 {
-        font-size: 1.6rem;
-    }
-    .identity-tags {
-        justify-content: flex-start;
-    }
-    .about-social {
-        justify-content: flex-start;
-    }
-
-    .tools-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    #newsFeed {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .charts-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    .chart-card canvas {
-        height: 140px !important;
-    }
-
-    .tool-card p {
-        display: block;
-    }
-}
-
-/* Laptops & Desktops (769px+) */
-@media (min-width: 769px) {
-    .top-bar {
-        padding: 10px 30px;
-    }
-    .top-bar-left #weatherCity {
-        display: inline;
-    }
-    .top-bar-left {
-        font-size: 0.9rem;
-        gap: 14px;
-    }
-    .top-bar-center {
-        font-size: 0.8rem;
-        gap: 12px;
-    }
-    .top-bar-right {
-        font-size: 0.9rem;
-        gap: 14px;
-    }
-
-    .overlay-content {
-        padding: 0 40px;
-    }
-
-    .stats-bar {
-        padding: 15px 30px;
-        margin: 10px 20px 15px;
-    }
-    .stat-value {
-        font-size: 2.2rem;
-    }
-    .stat-label {
-        font-size: 0.7rem;
-    }
-
-    .logo-text {
-        font-size: 3.2rem;
-    }
-    .logo-icon {
-        font-size: 3rem;
-    }
-    .brand-tagline {
-        font-size: 0.8rem;
-    }
-
-    .about-box {
-        padding: 25px 35px;
-        gap: 30px;
-    }
-    .about-avatar {
-        font-size: 4.5rem;
-    }
-    .about-text h2 {
-        font-size: 2rem;
-    }
-    .about-text .bio {
-        font-size: 0.9rem;
-    }
-
-    .tools-section {
-        padding: 15px 20px;
-    }
-    .tools-header h2 {
-        font-size: 1.8rem;
-    }
-    .tools-header .tools-sub {
-        font-size: 0.7rem;
-    }
-
-    .tools-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
-
-    #newsFeed {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-    }
-
-    .charts-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-    }
-    .chart-card canvas {
-        height: 200px !important;
-    }
-
-    .tool-card {
-        padding: 20px 18px;
-    }
-    .tool-card p {
-        display: block;
-    }
-    .tool-card h3 {
-        font-size: 0.95rem;
-    }
-    .cyber-input {
-        font-size: 0.78rem;
-        padding: 8px 14px;
-    }
-    .cyber-btn {
-        font-size: 0.75rem;
-        padding: 8px;
-    }
-    .result-box {
-        font-size: 0.7rem;
-        padding: 6px 10px;
-    }
-
-    #threatMap {
-        padding: 15px 20px;
-    }
-    #mapAttacks {
-        font-size: 0.9rem;
-    }
-
-    footer {
-        padding: 30px 20px 20px;
-    }
-    .footer-brand {
-        font-size: 1.3rem;
-    }
-    .footer-motto {
-        font-size: 0.8rem;
-    }
-    .footer-content p {
-        font-size: 0.8rem;
-    }
-    .footer-link {
-        font-size: 1.2rem;
-    }
-}
-
-/* ====== SCROLLBAR ====== */
-::-webkit-scrollbar {
-    width: 3px;
-}
-::-webkit-scrollbar-track {
-    background: #060a14;
-}
-::-webkit-scrollbar-thumb {
-    background: #00d4ff;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #ff44cc;
-}
-
-/* ====== SELECTION ====== */
-::selection {
-    background: #ff44cc;
-    color: #ffffff;
+body.light-mode .fifa-news-card h4 {
+    color: #1a2a3a;
 }
