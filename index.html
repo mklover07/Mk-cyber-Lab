@@ -3,489 +3,468 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>MK Cyber Hub — Cyber Intelligence + FIFA World Cup</title>
+    <title>MK Cyber Hub — Next-Gen Cyber Intelligence</title>
     <link rel="stylesheet" href="style.css">
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- ====== TOP BAR ====== -->
-    <div class="top-bar">
-        <div class="top-bar-left">
-            <span class="weather-icon">🌤️</span>
-            <span id="weatherTemp">34°C</span>
-            <span id="weatherCity">Jodhpur, India</span>
+    <!-- ====== MODERN TOP BAR ====== -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="brand-mini">
+                <span class="brand-dot"></span>
+                <span class="brand-name">MK Cyber Hub</span>
+            </div>
         </div>
-        <div class="top-bar-center">
-            <span class="status-dot">🟢</span>
-            <span>ONLINE</span>
-            <button onclick="toggleTheme()" class="theme-toggle">🌙</button>
+        <div class="nav-center">
+            <span class="status-badge">
+                <span class="status-pulse"></span>
+                <span>System Online</span>
+            </span>
         </div>
-        <div class="top-bar-right">
-            <span id="currentDate">Sat, 18 Jul</span>
-            <span id="currentTime">14:30:45</span>
+        <div class="nav-right">
+            <span class="weather-display">
+                <i class="fas fa-cloud-sun"></i>
+                <span id="weatherTemp">34°C</span>
+                <span id="weatherCity">Jodhpur</span>
+            </span>
+            <span class="time-display">
+                <i class="far fa-clock"></i>
+                <span id="currentTime">14:30:45</span>
+                <span id="currentDate">Sat, 18 Jul</span>
+            </span>
+            <button onclick="toggleTheme()" class="theme-btn" aria-label="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
-    </div>
+    </nav>
 
     <!-- ====== 3D GLOBE ====== -->
     <div id="globe-container"></div>
 
-    <!-- ========================================================= -->
-    <!-- ====== OVERLAY CONTENT ====== -->
-    <!-- ========================================================= -->
-    <div class="overlay-content">
+    <!-- ====== MAIN CONTENT ====== -->
+    <main class="main-content">
 
-        <!-- ====== BRANDING ====== -->
-        <section class="hero-brand">
-            <div class="brand-container">
-                <div class="brand-logo">
-                    <span class="logo-icon">⚡</span>
-                    <span class="logo-text">
-                        <span class="mk">MK</span>
-                        <span class="cyber-brand">CYBER</span>
-                        <span class="hub">HUB</span>
-                    </span>
+        <!-- ====== HERO SECTION ====== -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="hero-badge">⚡ Next-Gen Cyber Intelligence</div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">MK CYBER HUB</span>
+                </h1>
+                <p class="hero-subtitle">🌍 Global Threat Monitoring · OSINT · FIFA World Cup 2026</p>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" id="totalThreats">12,847</span>
+                        <span class="hero-stat-label">Total Threats</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" id="activeAttacks">342</span>
+                        <span class="hero-stat-label">Active Attacks</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" id="vulnerabilities">1,204</span>
+                        <span class="hero-stat-label">Vulnerabilities</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" id="countries">189</span>
+                        <span class="hero-stat-label">Countries</span>
+                    </div>
                 </div>
-                <p class="brand-tagline">🌍 CYBER INTELLIGENCE • THREAT MONITORING • FIFA WORLD CUP</p>
-            </div>
-        </section>
-
-        <!-- ====== STATS BAR ====== -->
-        <section class="stats-bar">
-            <div class="stat-item">
-                <span class="stat-value" id="totalThreats">12,847</span>
-                <span class="stat-label">Total Threats</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value" id="activeAttacks">342</span>
-                <span class="stat-label">Active Attacks</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value" id="vulnerabilities">1,204</span>
-                <span class="stat-label">Vulnerabilities</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value" id="countries">189</span>
-                <span class="stat-label">Countries</span>
             </div>
         </section>
 
         <!-- ====== THREAT MAP ====== -->
-        <section class="tools-section">
-            <div class="tools-header">
-                <h2>🌍 LIVE THREAT MAP</h2>
-                <p class="tools-sub">REAL-TIME CYBER ATTACK VISUALIZATION</p>
+        <section class="glass-section">
+            <div class="section-header">
+                <h2><i class="fas fa-globe-americas"></i> Live Threat Map</h2>
+                <span class="section-badge">Real-Time</span>
             </div>
-            <div id="threatMap">
+            <div class="glass-card threat-map-card">
                 <div id="mapAttacks">
-                    🚨 Recent Attacks:<br>
+                    <i class="fas fa-exclamation-triangle" style="color:#ff44cc;"></i>
                     <span id="attackLog">Phishing domain — suspicious.com (IN)</span>
                 </div>
             </div>
         </section>
 
-        <!-- ====== AI THREAT ANALYZER ====== -->
-        <section class="tools-section">
-            <div class="tools-header">
-                <h2>🤖 AI THREAT ANALYZER</h2>
-                <p class="tools-sub">AI-POWERED CYBER THREAT ANALYSIS</p>
-            </div>
-            <div class="tool-card" style="max-width:100%;">
-                <div class="tool-icon">🧠</div>
-                <h3>AI THREAT ANALYSIS</h3>
-                <p>AI से साइबर थ्रेट का विश्लेषण करें</p>
-                <div class="tool-demo">
-                    <input type="text" id="aiInput" placeholder='Enter IP or Domain' class="cyber-input">
-                    <button onclick="runAIAnalysis()" class="cyber-btn">🤖 ANALYZE</button>
-                    <div id="aiResult" class="result-box"></div>
+        <!-- ====== AI + DARK WEB ====== -->
+        <section class="glass-section">
+            <div class="glass-grid glass-grid-2">
+                <!-- AI Threat Analyzer -->
+                <div class="glass-card">
+                    <div class="card-icon">🧠</div>
+                    <h3>AI Threat Analyzer</h3>
+                    <p>AI-powered cyber threat analysis</p>
+                    <div class="input-group">
+                        <input type="text" id="aiInput" placeholder="Enter IP or Domain" class="modern-input">
+                        <button onclick="runAIAnalysis()" class="modern-btn primary">Analyze</button>
+                    </div>
+                    <div id="aiResult" class="result-modern"></div>
                 </div>
-            </div>
-        </section>
 
-        <!-- ====== DARK WEB MONITOR ====== -->
-        <section class="tools-section">
-            <div class="tools-header">
-                <h2>🕵️ DARK WEB MONITOR</h2>
-                <p class="tools-sub">CHECK IF YOUR DATA HAS BEEN LEAKED</p>
-            </div>
-            <div class="tool-card" style="max-width:100%;">
-                <div class="tool-icon">🔓</div>
-                <h3>BREACH CHECK</h3>
-                <p>Check if your email appears in data breaches</p>
-                <div class="tool-demo">
-                    <input type="email" id="darkWebInput" placeholder='Enter email' class="cyber-input">
-                    <button onclick="runDarkWebMonitor()" class="cyber-btn">🔍 CHECK</button>
-                    <div id="darkWebResult" class="result-box"></div>
+                <!-- Dark Web Monitor -->
+                <div class="glass-card">
+                    <div class="card-icon">🔓</div>
+                    <h3>Dark Web Monitor</h3>
+                    <p>Check if your data has been leaked</p>
+                    <div class="input-group">
+                        <input type="email" id="darkWebInput" placeholder="Enter email" class="modern-input">
+                        <button onclick="runDarkWebMonitor()" class="modern-btn secondary">Check</button>
+                    </div>
+                    <div id="darkWebResult" class="result-modern"></div>
                 </div>
             </div>
         </section>
 
         <!-- ====== CYBER NEWS ====== -->
-        <section class="tools-section">
-            <div class="tools-header">
-                <h2>📰 CYBER NEWS</h2>
-                <p class="tools-sub">LATEST CYBERSECURITY NEWS</p>
+        <section class="glass-section">
+            <div class="section-header">
+                <h2><i class="fas fa-newspaper"></i> Cyber News</h2>
+                <span class="section-badge">Latest</span>
             </div>
-            <div id="newsFeed">
-                <div class="news-card">
-                    <span style="color:#00d4ff;">📌</span>
-                    <h4>Ransomware Attack Hits Hospital</h4>
-                    <p>Patient data compromised</p>
-                    <span>2 hours ago</span>
+            <div class="news-grid">
+                <div class="glass-card news-card">
+                    <div class="news-badge">Breaking</div>
+                    <h4>Ransomware Attack Hits Major Hospital</h4>
+                    <p>Patient data compromised in latest attack</p>
+                    <span class="news-time">2 hours ago</span>
                 </div>
-                <div class="news-card">
-                    <span style="color:#00d4ff;">📌</span>
-                    <h4>New Zero-Day Vulnerability</h4>
+                <div class="glass-card news-card">
+                    <div class="news-badge">Update</div>
+                    <h4>New Zero-Day Vulnerability Discovered</h4>
                     <p>Millions of devices at risk</p>
-                    <span>5 hours ago</span>
+                    <span class="news-time">5 hours ago</span>
                 </div>
-                <div class="news-card">
-                    <span style="color:#00d4ff;">📌</span>
-                    <h4>AI-Powered Phishing on Rise</h4>
-                    <p>Cybercriminals using AI</p>
-                    <span>8 hours ago</span>
+                <div class="glass-card news-card">
+                    <div class="news-badge">Alert</div>
+                    <h4>AI-Powered Phishing Attacks on Rise</h4>
+                    <p>Cybercriminals using AI to craft convincing emails</p>
+                    <span class="news-time">8 hours ago</span>
                 </div>
             </div>
         </section>
 
         <!-- ====== CHARTS ====== -->
-        <section class="tools-section">
-            <div class="tools-header">
-                <h2>📊 THREAT ANALYTICS</h2>
-                <p class="tools-sub">VISUALIZE CYBER THREAT DATA</p>
+        <section class="glass-section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-line"></i> Threat Analytics</h2>
+                <span class="section-badge">Visual</span>
             </div>
-            <div class="charts-grid">
-                <div class="chart-card">
+            <div class="glass-grid glass-grid-2">
+                <div class="glass-card chart-card">
                     <canvas id="threatChart"></canvas>
                 </div>
-                <div class="chart-card">
+                <div class="glass-card chart-card">
                     <canvas id="attackChart"></canvas>
                 </div>
             </div>
         </section>
 
         <!-- ====== CTF CHALLENGES ====== -->
-        <section class="tools-section">
-            <div class="tools-header">
-                <h2>🎮 CTF CHALLENGES</h2>
-                <p class="tools-sub">CAPTURE THE FLAG</p>
+        <section class="glass-section">
+            <div class="section-header">
+                <h2><i class="fas fa-flag"></i> CTF Challenges</h2>
+                <span class="section-badge">Play</span>
             </div>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-icon">🏴</div>
-                    <h3>WEB EXPLOITATION</h3>
-                    <button onclick="startCTF('web')" class="cyber-btn">▶ START</button>
-                    <div id="ctfWebResult" class="result-box"></div>
+            <div class="glass-grid glass-grid-3">
+                <div class="glass-card ctf-card" onclick="startCTF('web')">
+                    <div class="ctf-icon">🏴</div>
+                    <h3>Web Exploitation</h3>
+                    <button class="modern-btn outline">Start</button>
+                    <div id="ctfWebResult" class="result-modern"></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">🔐</div>
-                    <h3>CRYPTO CHALLENGE</h3>
-                    <button onclick="startCTF('crypto')" class="cyber-btn">▶ START</button>
-                    <div id="ctfCryptoResult" class="result-box"></div>
+                <div class="glass-card ctf-card" onclick="startCTF('crypto')">
+                    <div class="ctf-icon">🔐</div>
+                    <h3>Crypto Challenge</h3>
+                    <button class="modern-btn outline">Start</button>
+                    <div id="ctfCryptoResult" class="result-modern"></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">🕵️</div>
-                    <h3>OSINT CHALLENGE</h3>
-                    <button onclick="startCTF('osint')" class="cyber-btn">▶ START</button>
-                    <div id="ctfOsintResult" class="result-box"></div>
+                <div class="glass-card ctf-card" onclick="startCTF('osint')">
+                    <div class="ctf-icon">🕵️</div>
+                    <h3>OSINT Challenge</h3>
+                    <button class="modern-btn outline">Start</button>
+                    <div id="ctfOsintResult" class="result-modern"></div>
                 </div>
             </div>
         </section>
 
         <!-- ====== VOICE COMMANDS ====== -->
-        <section class="tools-section">
-            <div class="tools-header">
-                <h2>🎤 VOICE COMMANDS</h2>
-                <p class="tools-sub">CONTROL WITH YOUR VOICE</p>
-            </div>
-            <div style="max-width:100%;text-align:center;">
-                <button onclick="startVoiceCommand()" class="cyber-btn" style="font-size:1rem;padding:12px 25px;">🎤 TALK</button>
-                <div id="voiceResult" class="result-box" style="margin-top:10px;">Click and speak a command</div>
+        <section class="glass-section">
+            <div class="glass-card voice-card">
+                <div class="voice-content">
+                    <span class="voice-icon">🎤</span>
+                    <h3>Voice Commands</h3>
+                    <p>Control OSINT tools with your voice</p>
+                    <button onclick="startVoiceCommand()" class="modern-btn primary">Talk</button>
+                    <div id="voiceResult" class="result-modern">Click and speak a command</div>
+                </div>
             </div>
         </section>
 
         <!-- ====== SECURITY SCANNER ====== -->
-        <section class="tools-section">
-            <div class="tools-header">
-                <h2>🛡️ SECURITY SCANNER</h2>
-                <p class="tools-sub">SCAN WEBSITE FOR VULNERABILITIES</p>
+        <section class="glass-section">
+            <div class="section-header">
+                <h2><i class="fas fa-shield-alt"></i> Security Scanner</h2>
+                <span class="section-badge">Scan</span>
             </div>
-            <div class="tool-card" style="max-width:100%;">
-                <div class="tool-icon">🛡️</div>
-                <h3>SECURITY SCAN</h3>
-                <div class="tool-demo">
-                    <input type="text" id="scanInput" placeholder='https://example.com' class="cyber-input">
-                    <button onclick="runSecurityScan()" class="cyber-btn">🛡️ SCAN</button>
-                    <div id="scanResult" class="result-box"></div>
+            <div class="glass-card">
+                <div class="input-group">
+                    <input type="text" id="scanInput" placeholder="https://example.com" class="modern-input">
+                    <button onclick="runSecurityScan()" class="modern-btn primary">Scan</button>
                 </div>
+                <div id="scanResult" class="result-modern"></div>
             </div>
         </section>
 
         <!-- ====== INCIDENT RESPONSE ====== -->
-        <section class="tools-section">
-            <div class="tools-header">
-                <h2>📜 INCIDENT RESPONSE</h2>
-                <p class="tools-sub">STEP-BY-STEP GUIDES</p>
+        <section class="glass-section">
+            <div class="section-header">
+                <h2><i class="fas fa-book"></i> Incident Response</h2>
+                <span class="section-badge">Guides</span>
             </div>
-            <div class="tools-grid">
-                <div class="tool-card" onclick="showGuide('ransomware')" style="cursor:pointer;">
-                    <div class="tool-icon">💀</div>
-                    <h3>RANSOMWARE</h3>
+            <div class="glass-grid glass-grid-3">
+                <div class="glass-card guide-card" onclick="showGuide('ransomware')">
+                    <div class="guide-icon">💀</div>
+                    <h3>Ransomware</h3>
                 </div>
-                <div class="tool-card" onclick="showGuide('phishing')" style="cursor:pointer;">
-                    <div class="tool-icon">🎣</div>
-                    <h3>PHISHING</h3>
+                <div class="glass-card guide-card" onclick="showGuide('phishing')">
+                    <div class="guide-icon">🎣</div>
+                    <h3>Phishing</h3>
                 </div>
-                <div class="tool-card" onclick="showGuide('breach')" style="cursor:pointer;">
-                    <div class="tool-icon">🔓</div>
-                    <h3>DATA BREACH</h3>
+                <div class="glass-card guide-card" onclick="showGuide('breach')">
+                    <div class="guide-icon">🔓</div>
+                    <h3>Data Breach</h3>
                 </div>
             </div>
-            <div id="guideResult" class="result-box" style="max-width:100%;margin:10px auto;padding:12px;">Click a card to view guide</div>
+            <div id="guideResult" class="result-modern result-full">Click a card to view the response guide</div>
         </section>
 
         <!-- ====== OSINT TOOLS ====== -->
-        <section class="tools-section">
-            <div class="tools-header">
-                <h2>🛸 TOP 10 OSINT TOOLS</h2>
-                <p class="tools-sub">REAL-TIME INTELLIGENCE</p>
+        <section class="glass-section">
+            <div class="section-header">
+                <h2><i class="fas fa-tools"></i> OSINT Tools</h2>
+                <span class="section-badge">10 Tools</span>
             </div>
-            <div class="tools-grid">
-                <div class="tool-card">
-                    <div class="tool-icon">🔍</div>
-                    <h3>GOOGLE DORKING</h3>
-                    <div class="tool-demo">
-                        <input type="text" id="dorkInput" placeholder='site:example.com' class="cyber-input">
-                        <button onclick="runDork()" class="cyber-btn">▶ EXECUTE</button>
-                        <div id="dorkResult" class="result-box"></div>
+            <div class="osint-grid">
+                <div class="glass-card osint-card">
+                    <div class="osint-icon">🔍</div>
+                    <h3>Google Dorking</h3>
+                    <div class="input-group">
+                        <input type="text" id="dorkInput" placeholder="site:example.com" class="modern-input">
+                        <button onclick="runDork()" class="modern-btn outline">Run</button>
                     </div>
+                    <div id="dorkResult" class="result-modern"></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">🌐</div>
-                    <h3>SHODAN</h3>
-                    <div class="tool-demo">
-                        <input type="text" id="shodanInput" placeholder='apache port:80' class="cyber-input">
-                        <button onclick="runShodan()" class="cyber-btn">▶ EXECUTE</button>
-                        <div id="shodanResult" class="result-box"></div>
+                <div class="glass-card osint-card">
+                    <div class="osint-icon">🌐</div>
+                    <h3>Shodan</h3>
+                    <div class="input-group">
+                        <input type="text" id="shodanInput" placeholder="apache port:80" class="modern-input">
+                        <button onclick="runShodan()" class="modern-btn outline">Run</button>
                     </div>
+                    <div id="shodanResult" class="result-modern"></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">📡</div>
-                    <h3>CENSYS</h3>
-                    <div class="tool-demo">
-                        <input type="text" id="censysInput" placeholder='example.com' class="cyber-input">
-                        <button onclick="runCensys()" class="cyber-btn">▶ EXECUTE</button>
-                        <div id="censysResult" class="result-box"></div>
+                <div class="glass-card osint-card">
+                    <div class="osint-icon">📡</div>
+                    <h3>Censys</h3>
+                    <div class="input-group">
+                        <input type="text" id="censysInput" placeholder="example.com" class="modern-input">
+                        <button onclick="runCensys()" class="modern-btn outline">Run</button>
                     </div>
+                    <div id="censysResult" class="result-modern"></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">📧</div>
-                    <h3>THEHARVESTER</h3>
-                    <div class="tool-demo">
-                        <input type="text" id="harvestInput" placeholder='example.com' class="cyber-input">
-                        <button onclick="runHarvester()" class="cyber-btn">▶ EXECUTE</button>
-                        <div id="harvestResult" class="result-box"></div>
+                <div class="glass-card osint-card">
+                    <div class="osint-icon">📧</div>
+                    <h3>TheHarvester</h3>
+                    <div class="input-group">
+                        <input type="text" id="harvestInput" placeholder="example.com" class="modern-input">
+                        <button onclick="runHarvester()" class="modern-btn outline">Run</button>
                     </div>
+                    <div id="harvestResult" class="result-modern"></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">🕷️</div>
-                    <h3>SPIDERFOOT</h3>
-                    <div class="tool-demo">
-                        <input type="text" id="spiderInput" placeholder='target.com' class="cyber-input">
-                        <button onclick="runSpiderfoot()" class="cyber-btn">▶ EXECUTE</button>
-                        <div id="spiderResult" class="result-box"></div>
+                <div class="glass-card osint-card">
+                    <div class="osint-icon">🕷️</div>
+                    <h3>Spiderfoot</h3>
+                    <div class="input-group">
+                        <input type="text" id="spiderInput" placeholder="target.com" class="modern-input">
+                        <button onclick="runSpiderfoot()" class="modern-btn outline">Run</button>
                     </div>
+                    <div id="spiderResult" class="result-modern"></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">🕸️</div>
-                    <h3>MALTEGO</h3>
-                    <div class="tool-demo">
-                        <input type="text" id="maltegoInput" placeholder='company name' class="cyber-input">
-                        <button onclick="runMaltego()" class="cyber-btn">▶ EXECUTE</button>
-                        <div id="maltegoResult" class="result-box"></div>
+                <div class="glass-card osint-card">
+                    <div class="osint-icon">🕸️</div>
+                    <h3>Maltego</h3>
+                    <div class="input-group">
+                        <input type="text" id="maltegoInput" placeholder="company name" class="modern-input">
+                        <button onclick="runMaltego()" class="modern-btn outline">Run</button>
                     </div>
+                    <div id="maltegoResult" class="result-modern"></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">📋</div>
+                <div class="glass-card osint-card">
+                    <div class="osint-icon">📋</div>
                     <h3>WHOIS</h3>
-                    <div class="tool-demo">
-                        <input type="text" id="whoisInput" placeholder='example.com' class="cyber-input">
-                        <button onclick="runWhois()" class="cyber-btn">▶ EXECUTE</button>
-                        <div id="whoisResult" class="result-box"></div>
+                    <div class="input-group">
+                        <input type="text" id="whoisInput" placeholder="example.com" class="modern-input">
+                        <button onclick="runWhois()" class="modern-btn outline">Run</button>
                     </div>
+                    <div id="whoisResult" class="result-modern"></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">🦠</div>
-                    <h3>VIRUSTOTAL</h3>
-                    <div class="tool-demo">
-                        <input type="text" id="vtInput" placeholder='https://example.com' class="cyber-input">
-                        <button onclick="runVirusTotal()" class="cyber-btn">▶ EXECUTE</button>
-                        <div id="vtResult" class="result-box"></div>
+                <div class="glass-card osint-card">
+                    <div class="osint-icon">🦠</div>
+                    <h3>VirusTotal</h3>
+                    <div class="input-group">
+                        <input type="text" id="vtInput" placeholder="https://example.com" class="modern-input">
+                        <button onclick="runVirusTotal()" class="modern-btn outline">Run</button>
                     </div>
+                    <div id="vtResult" class="result-modern"></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">🔓</div>
-                    <h3>HAVE I BEEN PWNED</h3>
-                    <div class="tool-demo">
-                        <input type="email" id="pwnedInput" placeholder='you@example.com' class="cyber-input">
-                        <button onclick="runPwned()" class="cyber-btn">▶ EXECUTE</button>
-                        <div id="pwnedResult" class="result-box"></div>
+                <div class="glass-card osint-card">
+                    <div class="osint-icon">🔓</div>
+                    <h3>Have I Been Pwned</h3>
+                    <div class="input-group">
+                        <input type="email" id="pwnedInput" placeholder="you@example.com" class="modern-input">
+                        <button onclick="runPwned()" class="modern-btn outline">Run</button>
                     </div>
+                    <div id="pwnedResult" class="result-modern"></div>
                 </div>
-                <div class="tool-card">
-                    <div class="tool-icon">📜</div>
-                    <h3>WAYBACK</h3>
-                    <div class="tool-demo">
-                        <input type="text" id="waybackInput" placeholder='example.com' class="cyber-input">
-                        <button onclick="runWayback()" class="cyber-btn">▶ EXECUTE</button>
-                        <div id="waybackResult" class="result-box"></div>
+                <div class="glass-card osint-card">
+                    <div class="osint-icon">📜</div>
+                    <h3>Wayback</h3>
+                    <div class="input-group">
+                        <input type="text" id="waybackInput" placeholder="example.com" class="modern-input">
+                        <button onclick="runWayback()" class="modern-btn outline">Run</button>
                     </div>
+                    <div id="waybackResult" class="result-modern"></div>
                 </div>
             </div>
         </section>
 
-        <!-- ========================================================= -->
-        <!-- ====== ⚽ FIFA WORLD CUP ====== -->
-        <!-- ========================================================= -->
-        <section class="tools-section fifa-section">
-            <div class="tools-header">
-                <h2>⚽ FIFA WORLD CUP 2026</h2>
-                <p class="tools-sub">LIVE UPDATES • SCORES • NEWS</p>
+        <!-- ====== FIFA WORLD CUP ====== -->
+        <section class="glass-section fifa-section">
+            <div class="section-header">
+                <h2><i class="fas fa-futbol"></i> FIFA World Cup 2026</h2>
+                <span class="section-badge live">Live</span>
             </div>
-
-            <div class="fifa-stats">
-                <div class="fifa-stat">
+            <div class="fifa-grid">
+                <div class="glass-card fifa-stat-card">
                     <span class="fifa-stat-value" id="matchesPlayed">48</span>
                     <span class="fifa-stat-label">Matches Played</span>
                 </div>
-                <div class="fifa-stat">
+                <div class="glass-card fifa-stat-card">
                     <span class="fifa-stat-value" id="goalsScored">124</span>
                     <span class="fifa-stat-label">Goals Scored</span>
                 </div>
-                <div class="fifa-stat">
+                <div class="glass-card fifa-stat-card">
                     <span class="fifa-stat-value" id="topScorer">Mbappé (7)</span>
                     <span class="fifa-stat-label">Top Scorer</span>
                 </div>
-                <div class="fifa-stat">
+                <div class="glass-card fifa-stat-card">
                     <span class="fifa-stat-value" id="nextMatch">France vs Brazil</span>
                     <span class="fifa-stat-label">Next Match</span>
                 </div>
             </div>
-
-            <div class="fifa-matches">
-                <h3>🔴 LIVE MATCHES</h3>
+            <div class="fifa-matches-modern">
+                <h4><i class="fas fa-circle" style="color:#ff4444;font-size:0.6rem;"></i> Live Matches</h4>
                 <div id="liveMatches">
-                    <div class="match-card">
-                        <div class="match-teams">
-                            <span class="team">🇦🇷 Argentina</span>
-                            <span class="score">2 - 1</span>
-                            <span class="team">🇫🇷 France</span>
-                        </div>
-                        <div class="match-time">⏱️ 78' • 2nd Half</div>
+                    <div class="match-card-modern">
+                        <span class="team">🇦🇷 Argentina</span>
+                        <span class="score-modern">2 - 1</span>
+                        <span class="team">🇫🇷 France</span>
+                        <span class="match-time-modern">⏱️ 78' • 2nd Half</span>
                     </div>
-                    <div class="match-card">
-                        <div class="match-teams">
-                            <span class="team">🇧🇷 Brazil</span>
-                            <span class="score">3 - 0</span>
-                            <span class="team">🇵🇹 Portugal</span>
-                        </div>
-                        <div class="match-time">⏱️ 62' • 2nd Half</div>
+                    <div class="match-card-modern">
+                        <span class="team">🇧🇷 Brazil</span>
+                        <span class="score-modern">3 - 0</span>
+                        <span class="team">🇵🇹 Portugal</span>
+                        <span class="match-time-modern">⏱️ 62' • 2nd Half</span>
                     </div>
-                    <div class="match-card">
-                        <div class="match-teams">
-                            <span class="team">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</span>
-                            <span class="score">1 - 1</span>
-                            <span class="team">🇩🇪 Germany</span>
-                        </div>
-                        <div class="match-time">⏱️ 45' • Half Time</div>
+                    <div class="match-card-modern">
+                        <span class="team">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England</span>
+                        <span class="score-modern">1 - 1</span>
+                        <span class="team">🇩🇪 Germany</span>
+                        <span class="match-time-modern">⏱️ 45' • Half Time</span>
                     </div>
                 </div>
             </div>
-
-            <div class="fifa-news">
-                <h3>📰 FIFA NEWS</h3>
+            <div class="fifa-news-modern">
+                <h4><i class="fas fa-newspaper"></i> FIFA News</h4>
                 <div id="fifaNews">
-                    <div class="fifa-news-card">
-                        <span class="news-badge">BREAKING</span>
-                        <h4>Mbappé scores hat-trick in quarter-final</h4>
-                        <p>France advances to semi-finals with 4-2 win</p>
-                        <span class="news-time">15 min ago</span>
+                    <div class="fifa-news-item">
+                        <span class="news-badge-modern">Breaking</span>
+                        <span class="news-text">Mbappé scores hat-trick in quarter-final</span>
+                        <span class="news-time-modern">15 min ago</span>
                     </div>
-                    <div class="fifa-news-card">
-                        <span class="news-badge">UPDATE</span>
-                        <h4>Brazil dominates Portugal 3-0</h4>
-                        <p>Neymar Jr. leads Brazil to semi-finals</p>
-                        <span class="news-time">45 min ago</span>
+                    <div class="fifa-news-item">
+                        <span class="news-badge-modern">Update</span>
+                        <span class="news-text">Brazil dominates Portugal 3-0</span>
+                        <span class="news-time-modern">45 min ago</span>
                     </div>
-                    <div class="fifa-news-card">
-                        <span class="news-badge">INJURY</span>
-                        <h4>Key player injured in warm-up</h4>
-                        <p>Star midfielder ruled out for the tournament</p>
-                        <span class="news-time">1 hour ago</span>
+                    <div class="fifa-news-item">
+                        <span class="news-badge-modern">Injury</span>
+                        <span class="news-text">Key player ruled out for tournament</span>
+                        <span class="news-time-modern">1 hour ago</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ========================================================= -->
-        <!-- ====== 👨‍💼 MANOJ MEENA ====== -->
-        <!-- ========================================================= -->
-        <section class="manoj-section">
-            <div class="manoj-container">
-                <div class="manoj-card">
-                    <div class="manoj-avatar">
-                        <img src="https://ui-avatars.com/api/?name=Manoj+Meena&size=120&background=00d4ff&color=fff&bold=true" alt="Manoj Meena" class="manoj-img">
+        <!-- ====== MANOJ MEENA ====== -->
+        <section class="glass-section manoj-section-modern">
+            <div class="glass-card manoj-card-modern">
+                <div class="manoj-avatar-modern">
+                    <img src="https://ui-avatars.com/api/?name=Manoj+Meena&size=120&background=00d4ff&color=fff&bold=true" alt="Manoj Meena">
+                </div>
+                <div class="manoj-info-modern">
+                    <h2>Manoj Meena</h2>
+                    <p class="manoj-title-modern">Founder, MK Cyber Hub</p>
+                    <div class="manoj-tags-modern">
+                        <span>🛡️ Cyber Crime Analyst</span>
+                        <span>📰 Investigative Journalist</span>
+                        <span>🔍 Digital Fraud Investigator</span>
+                        <span>⚕️ Healthcare Professional</span>
+                        <span>⚽ FIFA Analyst</span>
                     </div>
-                    <div class="manoj-info">
-                        <h2>👨‍💼 MANOJ MEENA</h2>
-                        <p class="manoj-title">Founder, MK Cyber Hub</p>
-                        <div class="manoj-tags">
-                            <span>🛡️ Cyber Crime Analyst</span>
-                            <span>📰 Investigative Journalist</span>
-                            <span>🔍 Digital Fraud Investigator</span>
-                            <span>⚕️ Healthcare Professional</span>
-                            <span>⚽ FIFA Analyst</span>
-                        </div>
-                        <p class="manoj-bio">
-                            <strong>Manoj Meena</strong> is the Founder of <strong>MK Cyber Hub</strong>, 
-                            dedicated to <span class="glow-text">global cyber security</span>, 
-                            <span class="glow-text">digital fraud investigation</span>, 
-                            <span class="glow-text">public awareness</span>, and 
-                            <span class="glow-text">FIFA World Cup analytics</span>.
-                        </p>
-                        <div class="manoj-social">
-                            <a href="#" class="social-link">🐦 Twitter</a>
-                            <a href="#" class="social-link">💻 GitHub</a>
-                            <a href="#" class="social-link">🔗 LinkedIn</a>
-                            <a href="#" class="social-link">📧 Email</a>
-                            <a href="#" class="social-link">⚽ FIFA Hub</a>
-                        </div>
+                    <p class="manoj-bio-modern">
+                        Dedicated to <span class="gradient-text">global cyber security</span>, 
+                        <span class="gradient-text">digital fraud investigation</span>, 
+                        and <span class="gradient-text">public awareness</span>.
+                    </p>
+                    <div class="manoj-social-modern">
+                        <a href="#" class="social-icon-modern"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon-modern"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon-modern"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon-modern"><i class="fas fa-envelope"></i></a>
+                        <a href="#" class="social-icon-modern"><i class="fas fa-futbol"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ====== FOOTER ====== -->
-        <footer>
-            <div class="footer-content">
-                <div class="footer-brand">⚡ MK CYBER HUB</div>
-                <p class="footer-motto">Truth · Integrity · Justice · Football</p>
-                <p>⚠️ OSINT is about using publicly available information responsibly.</p>
-                <div class="footer-social">
-                    <a href="#" class="footer-link">🐦</a>
-                    <a href="#" class="footer-link">💻</a>
-                    <a href="#" class="footer-link">🔗</a>
-                    <a href="#" class="footer-link">📧</a>
-                    <a href="#" class="footer-link">⚽</a>
-                </div>
-                <div class="footer-glow">© 2026 MK Cyber Hub — Cyber Intelligence + FIFA World Cup</div>
-            </div>
-        </footer>
+    </main>
 
-    </div>
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer-modern">
+        <div class="footer-content-modern">
+            <div class="footer-brand-modern">⚡ MK Cyber Hub</div>
+            <p class="footer-motto-modern">Truth · Integrity · Justice · Football</p>
+            <p class="footer-disclaimer">⚠️ OSINT is about using publicly available information responsibly.</p>
+            <div class="footer-social-modern">
+                <a href="#" class="footer-icon-modern"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="footer-icon-modern"><i class="fab fa-github"></i></a>
+                <a href="#" class="footer-icon-modern"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="footer-icon-modern"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="footer-icon-modern"><i class="fas fa-futbol"></i></a>
+            </div>
+            <div class="footer-glow-modern">© 2026 MK Cyber Hub — Next-Gen Cyber Intelligence</div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
