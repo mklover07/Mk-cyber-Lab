@@ -144,14 +144,17 @@ function animateStats() {
 }
 
 // ============================================================
-// 🌙 THEME TOGGLE
+// 🌙 THEME TOGGLE (Updated for Font Awesome)
 // ============================================================
 
 function toggleTheme() {
     document.body.classList.toggle('light-mode');
-    const btn = document.querySelector('.theme-toggle');
-    btn.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
-}
+    const btn = document.querySelector('.theme-btn i');
+    if (document.body.classList.contains('light-mode')) {
+        btn.className = 'fas fa-sun';
+    } else {
+        btn.className = 'fas fa-moon';
+    }
 
 // ============================================================
 // 🌍 THREAT MAP
