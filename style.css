@@ -1,8 +1,25 @@
 /* ============================================================ */
-/* ====== MODERN 2026 DESIGN — GLASSMORPHISM ====== */
+/* ====== NEW COLOR PALETTE 2026 ====== */
 /* ============================================================ */
 
-/* ----- RESET & BASE ----- */
+:root {
+    --primary: #6C63FF;
+    --secondary: #FF6584;
+    --tertiary: #00D4FF;
+    --success: #00D4AA;
+    --bg-dark: #0A0E1A;
+    --bg-light: #F0F4FA;
+    --text-light: #E8EDF5;
+    --text-dark: #1A2A3A;
+    --glass-bg: rgba(108, 99, 255, 0.04);
+    --glass-border: rgba(108, 99, 255, 0.06);
+    --card-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================================ */
+/* ====== RESET & BASE ====== */
+/* ============================================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,8 +28,8 @@
 }
 
 body {
-    background: #080c1a;
-    color: #e8edf5;
+    background: var(--bg-dark);
+    color: var(--text-light);
     min-height: 100vh;
     overflow-x: hidden;
     padding-top: 70px;
@@ -20,14 +37,14 @@ body {
 }
 
 body.light-mode {
-    background: #f0f4fa;
-    color: #1a2a3a;
+    background: var(--bg-light);
+    color: var(--text-dark);
 }
 
 /* ----- SCROLLBAR ----- */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #080c1a; }
-::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #00d4ff, #ff44cc); border-radius: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--primary), var(--secondary)); border-radius: 10px; }
 
 /* ----- GLOBE ----- */
 #globe-container {
@@ -38,13 +55,13 @@ body.light-mode {
     height: 100%;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.06;
+    opacity: 0.05;
 }
 
 body.light-mode #globe-container { opacity: 0.03; }
 
 /* ============================================================ */
-/* ====== MODERN NAVBAR ====== */
+/* ====== NAVBAR ====== */
 /* ============================================================ */
 
 .navbar {
@@ -57,9 +74,9 @@ body.light-mode #globe-container { opacity: 0.03; }
     justify-content: space-between;
     align-items: center;
     padding: 10px 24px;
-    background: rgba(8, 12, 26, 0.85);
+    background: rgba(10, 14, 26, 0.85);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(108, 99, 255, 0.06);
 }
 
 body.light-mode .navbar {
@@ -71,31 +88,36 @@ body.light-mode .navbar {
 .brand-mini { display: flex; align-items: center; gap: 8px; }
 .brand-dot {
     width: 8px; height: 8px;
-    background: #00d4ff;
+    background: var(--primary);
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 20px rgba(108, 99, 255, 0.3);
     animation: pulse-dot 2s infinite;
 }
 @keyframes pulse-dot {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.4; transform: scale(0.8); }
 }
-.brand-name { font-weight: 700; font-size: 0.95rem; color: #fff; letter-spacing: 0.5px; }
-body.light-mode .brand-name { color: #1a2a3a; }
+.brand-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+body.light-mode .brand-name { color: var(--text-dark); }
 
 .nav-center { display: flex; align-items: center; }
 .status-badge {
     display: flex; align-items: center; gap: 8px;
     padding: 4px 14px;
-    background: rgba(68, 221, 136, 0.1);
-    border: 1px solid rgba(68, 221, 136, 0.15);
+    background: rgba(0, 212, 170, 0.1);
+    border: 1px solid rgba(0, 212, 170, 0.15);
     border-radius: 20px;
     font-size: 0.7rem;
-    color: #44dd88;
+    color: var(--success);
 }
 .status-pulse {
     width: 6px; height: 6px;
-    background: #44dd88;
+    background: var(--success);
     border-radius: 50%;
     animation: pulse 1.5s infinite;
 }
@@ -117,7 +139,7 @@ body.light-mode .brand-name { color: #1a2a3a; }
     font-size: 1rem; cursor: pointer; padding: 4px 8px;
     border-radius: 8px; transition: all 0.3s;
 }
-.theme-btn:hover { color: #00d4ff; background: rgba(0,212,255,0.05); }
+.theme-btn:hover { color: var(--primary); background: rgba(108, 99, 255, 0.05); }
 
 /* ============================================================ */
 /* ====== MAIN CONTENT ====== */
@@ -131,19 +153,22 @@ body.light-mode .brand-name { color: #1a2a3a; }
     padding: 0 20px 40px;
 }
 
-/* ====== GLASSMORPHISM CARDS ====== */
+/* ============================================================ */
+/* ====== GLASSMORPHISM ====== */
+/* ============================================================ */
+
 .glass-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--glass-bg);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 20px 24px;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .glass-card:hover {
-    border-color: rgba(0, 212, 255, 0.08);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba(108, 99, 255, 0.12);
+    box-shadow: var(--card-shadow);
     transform: translateY(-2px);
 }
 
@@ -152,7 +177,10 @@ body.light-mode .glass-card {
     border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
+/* ============================================================ */
 /* ====== HERO ====== */
+/* ============================================================ */
+
 .hero-section {
     text-align: center;
     padding: 30px 0 20px;
@@ -160,15 +188,15 @@ body.light-mode .glass-card {
 .hero-badge {
     display: inline-block;
     padding: 4px 16px;
-    background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(255,68,204,0.05));
-    border: 1px solid rgba(0,212,255,0.1);
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.1), rgba(255, 101, 132, 0.05));
+    border: 1px solid rgba(108, 99, 255, 0.1);
     border-radius: 20px;
     font-size: 0.7rem;
-    color: #00d4ff;
+    color: var(--primary);
     letter-spacing: 2px;
 }
 .gradient-text {
-    background: linear-gradient(135deg, #00d4ff, #ff44cc);
+    background: linear-gradient(135deg, var(--primary), var(--tertiary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -196,7 +224,7 @@ body.light-mode .glass-card {
     display: block;
     font-size: 2rem;
     font-weight: 700;
-    color: #00d4ff;
+    color: var(--primary);
     font-family: 'Courier New', monospace;
 }
 .hero-stat-label {
@@ -206,10 +234,11 @@ body.light-mode .glass-card {
     text-transform: uppercase;
 }
 
+/* ============================================================ */
 /* ====== SECTION HEADERS ====== */
-.glass-section {
-    margin: 30px 0;
-}
+/* ============================================================ */
+
+.glass-section { margin: 30px 0; }
 .section-header {
     display: flex;
     align-items: center;
@@ -219,32 +248,37 @@ body.light-mode .glass-card {
 .section-header h2 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #e8edf5;
+    color: var(--text-light);
 }
-body.light-mode .section-header h2 { color: #1a2a3a; }
-.section-header h2 i { color: #00d4ff; margin-right: 10px; }
+body.light-mode .section-header h2 { color: var(--text-dark); }
 .section-badge {
     padding: 2px 12px;
-    background: rgba(0,212,255,0.08);
-    border: 1px solid rgba(0,212,255,0.1);
+    background: rgba(108, 99, 255, 0.08);
+    border: 1px solid rgba(108, 99, 255, 0.1);
     border-radius: 12px;
     font-size: 0.55rem;
-    color: #00d4ff;
+    color: var(--primary);
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 .section-badge.live {
-    background: rgba(255,68,68,0.1);
-    border-color: rgba(255,68,68,0.15);
-    color: #ff4444;
+    background: rgba(255, 101, 132, 0.1);
+    border-color: rgba(255, 101, 132, 0.15);
+    color: var(--secondary);
 }
 
+/* ============================================================ */
 /* ====== GRIDS ====== */
+/* ============================================================ */
+
 .glass-grid { display: grid; gap: 16px; }
 .glass-grid-2 { grid-template-columns: 1fr 1fr; }
 .glass-grid-3 { grid-template-columns: repeat(3, 1fr); }
 
+/* ============================================================ */
 /* ====== INPUTS & BUTTONS ====== */
+/* ============================================================ */
+
 .input-group {
     display: flex;
     gap: 10px;
@@ -256,18 +290,18 @@ body.light-mode .section-header h2 { color: #1a2a3a; }
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 10px;
-    color: #e8edf5;
+    color: var(--text-light);
     font-size: 0.8rem;
     outline: none;
     transition: all 0.3s;
 }
 .modern-input:focus {
-    border-color: rgba(0,212,255,0.2);
-    box-shadow: 0 0 30px rgba(0,212,255,0.02);
+    border-color: rgba(108, 99, 255, 0.2);
+    box-shadow: 0 0 30px rgba(108, 99, 255, 0.02);
 }
 body.light-mode .modern-input {
     background: rgba(0,0,0,0.02);
-    color: #1a2a3a;
+    color: var(--text-dark);
 }
 .modern-input::placeholder { color: #556677; }
 
@@ -282,59 +316,67 @@ body.light-mode .modern-input {
     letter-spacing: 0.5px;
 }
 .modern-btn.primary {
-    background: linear-gradient(135deg, #00d4ff, #0088cc);
+    background: linear-gradient(135deg, var(--primary), #5a4fd4);
     color: #fff;
 }
 .modern-btn.primary:hover {
     transform: translateY(-1px);
-    box-shadow: 0 6px 30px rgba(0,212,255,0.2);
+    box-shadow: 0 6px 30px rgba(108, 99, 255, 0.3);
 }
 .modern-btn.secondary {
-    background: linear-gradient(135deg, #ff44cc, #cc0088);
+    background: linear-gradient(135deg, var(--secondary), #e05472);
     color: #fff;
 }
 .modern-btn.secondary:hover {
     transform: translateY(-1px);
-    box-shadow: 0 6px 30px rgba(255,68,204,0.2);
+    box-shadow: 0 6px 30px rgba(255, 101, 132, 0.3);
 }
 .modern-btn.outline {
     background: transparent;
-    border: 1px solid rgba(0,212,255,0.15);
-    color: #00d4ff;
+    border: 1px solid rgba(108, 99, 255, 0.15);
+    color: var(--primary);
 }
 .modern-btn.outline:hover {
-    background: rgba(0,212,255,0.05);
-    border-color: rgba(0,212,255,0.3);
+    background: rgba(108, 99, 255, 0.05);
+    border-color: rgba(108, 99, 255, 0.3);
 }
 
+/* ============================================================ */
 /* ====== RESULT BOX ====== */
+/* ============================================================ */
+
 .result-modern {
     margin-top: 10px;
     padding: 10px 14px;
     background: rgba(0,0,0,0.2);
     border-radius: 8px;
     font-size: 0.7rem;
-    color: #44dd88;
-    border-left: 2px solid rgba(0,212,255,0.06);
+    color: var(--success);
+    border-left: 2px solid rgba(108, 99, 255, 0.06);
     word-break: break-all;
     min-height: 30px;
     line-height: 1.5;
 }
-.result-modern.error { color: #ff4466; border-left-color: #ff4466; }
+.result-modern.error { color: var(--secondary); border-left-color: var(--secondary); }
 .result-full { max-width: 100%; margin: 10px 0; }
 
+/* ============================================================ */
 /* ====== THREAT MAP ====== */
+/* ============================================================ */
+
 .threat-map-card { padding: 16px 20px; }
 #mapAttacks { display: flex; align-items: center; gap: 12px; font-size: 0.85rem; color: #99b0c0; }
-#attackLog { color: #ff44cc; font-weight: 500; }
+#attackLog { color: var(--secondary); font-weight: 500; }
 
+/* ============================================================ */
 /* ====== NEWS ====== */
+/* ============================================================ */
+
 .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .news-card { padding: 16px 18px; cursor: default; }
 .news-badge {
     display: inline-block;
     padding: 1px 10px;
-    background: #ff44cc;
     color: #fff;
     font-size: 0.5rem;
     border-radius: 10px;
@@ -342,32 +384,47 @@ body.light-mode .modern-input {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-.news-card h4 { font-size: 0.85rem; margin: 6px 0 2px; color: #e8edf5; }
-body.light-mode .news-card h4 { color: #1a2a3a; }
+.news-card h4 { font-size: 0.85rem; margin: 6px 0 2px; color: var(--text-light); }
+body.light-mode .news-card h4 { color: var(--text-dark); }
 .news-card p { font-size: 0.7rem; color: #7788a0; }
 .news-time { font-size: 0.55rem; color: #556677; }
 
+/* ============================================================ */
 /* ====== CHARTS ====== */
+/* ============================================================ */
+
 .chart-card { padding: 16px; }
 .chart-card canvas { width: 100% !important; height: 160px !important; }
 
-/* ====== CTF CARDS ====== */
+/* ============================================================ */
+/* ====== CTF ====== */
+/* ============================================================ */
+
 .ctf-card { text-align: center; cursor: pointer; }
 .ctf-icon { font-size: 2rem; display: block; margin-bottom: 4px; }
 .ctf-card h3 { font-size: 0.8rem; margin-bottom: 8px; }
 
+/* ============================================================ */
 /* ====== VOICE ====== */
+/* ============================================================ */
+
 .voice-card { text-align: center; padding: 30px 24px; }
 .voice-icon { font-size: 2.5rem; display: block; margin-bottom: 8px; }
 .voice-card h3 { font-size: 1rem; }
 .voice-card p { font-size: 0.75rem; color: #8899aa; margin-bottom: 12px; }
 
-/* ====== GUIDE CARDS ====== */
+/* ============================================================ */
+/* ====== GUIDE ====== */
+/* ============================================================ */
+
 .guide-card { text-align: center; cursor: pointer; padding: 16px; }
 .guide-icon { font-size: 1.8rem; display: block; }
 .guide-card h3 { font-size: 0.7rem; margin-top: 4px; letter-spacing: 0.5px; }
 
-/* ====== OSINT TOOLS ====== */
+/* ============================================================ */
+/* ====== OSINT ====== */
+/* ============================================================ */
+
 .osint-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -377,30 +434,58 @@ body.light-mode .news-card h4 { color: #1a2a3a; }
 .osint-icon { font-size: 1.4rem; text-align: center; display: block; }
 .osint-card h3 { font-size: 0.65rem; text-align: center; margin: 4px 0 8px; letter-spacing: 0.5px; }
 
-/* ====== FIFA ====== */
-.fifa-section {
-    background: linear-gradient(135deg, rgba(0,212,255,0.02), rgba(255,68,204,0.02));
+/* ============================================================ */
+/* ====== SPORTS HUB ====== */
+/* ============================================================ */
+
+.sports-section {
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.02), rgba(255, 101, 132, 0.02));
     border-radius: 16px;
     padding: 20px !important;
+    margin: 20px 0 !important;
 }
-.fifa-grid {
+
+.sports-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
     margin-bottom: 16px;
 }
-.fifa-stat-card { text-align: center; padding: 12px 16px; }
-.fifa-stat-value {
+
+.sports-stat-card {
+    text-align: center;
+    padding: 12px 16px;
+}
+
+.sports-stat-value {
     display: block;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    color: #ff44cc;
+    color: var(--primary);
     font-family: 'Courier New', monospace;
 }
-.fifa-stat-label { font-size: 0.5rem; color: #556677; text-transform: uppercase; letter-spacing: 1px; }
 
-.fifa-matches-modern { margin: 14px 0; }
-.fifa-matches-modern h4 { font-size: 0.8rem; color: #00d4ff; margin-bottom: 10px; }
+.sports-stat-label {
+    font-size: 0.5rem;
+    color: #556677;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sports-matches { margin: 14px 0; }
+.sports-matches h4 { font-size: 0.8rem; color: var(--primary); margin-bottom: 10px; }
+
+.sports-news { margin: 14px 0; }
+.sports-news h4 { font-size: 0.8rem; color: var(--primary); margin-bottom: 10px; }
+
+.sports-news-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+
 .match-card-modern {
     display: flex;
     align-items: center;
@@ -412,31 +497,14 @@ body.light-mode .news-card h4 { color: #1a2a3a; }
 }
 .match-card-modern .team { font-size: 0.8rem; font-weight: 500; }
 .match-card-modern .score-modern {
-    font-size: 1rem; font-weight: 700; color: #ff44cc; margin: 0 8px;
+    font-size: 1rem; font-weight: 700; color: var(--secondary); margin: 0 8px;
 }
 .match-time-modern { font-size: 0.55rem; color: #556677; margin-left: auto; }
 
-.fifa-news-modern h4 { font-size: 0.8rem; color: #00d4ff; margin-bottom: 10px; }
-.fifa-news-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.02);
-}
-.news-badge-modern {
-    padding: 1px 10px;
-    background: #ff44cc;
-    color: #fff;
-    font-size: 0.5rem;
-    border-radius: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-.news-text { font-size: 0.75rem; color: #99b0c0; flex: 1; }
-.news-time-modern { font-size: 0.5rem; color: #556677; }
-
+/* ============================================================ */
 /* ====== MANOJ MEENA ====== */
+/* ============================================================ */
+
 .manoj-section-modern { margin: 30px 0; }
 .manoj-card-modern {
     display: flex;
@@ -448,23 +516,23 @@ body.light-mode .news-card h4 { color: #1a2a3a; }
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 3px solid rgba(0,212,255,0.2);
-    box-shadow: 0 0 60px rgba(0,212,255,0.05);
+    border: 3px solid rgba(108, 99, 255, 0.2);
+    box-shadow: 0 0 60px rgba(108, 99, 255, 0.05);
     transition: all 0.3s;
 }
 .manoj-avatar-modern img:hover {
-    border-color: #00d4ff;
+    border-color: var(--primary);
     transform: scale(1.03);
-    box-shadow: 0 0 80px rgba(0,212,255,0.1);
+    box-shadow: 0 0 80px rgba(108, 99, 255, 0.1);
 }
 .manoj-info-modern h2 {
     font-size: 1.6rem;
     font-weight: 700;
     color: #fff;
 }
-body.light-mode .manoj-info-modern h2 { color: #1a2a3a; }
+body.light-mode .manoj-info-modern h2 { color: var(--text-dark); }
 .manoj-title-modern {
-    color: #00d4ff;
+    color: var(--primary);
     font-size: 0.85rem;
     opacity: 0.6;
     margin-bottom: 6px;
@@ -477,8 +545,8 @@ body.light-mode .manoj-info-modern h2 { color: #1a2a3a; }
 }
 .manoj-tags-modern span {
     padding: 3px 12px;
-    background: rgba(0,212,255,0.04);
-    border: 1px solid rgba(0,212,255,0.04);
+    background: rgba(108, 99, 255, 0.04);
+    border: 1px solid rgba(108, 99, 255, 0.04);
     border-radius: 16px;
     font-size: 0.6rem;
     color: #88b0c8;
@@ -506,13 +574,16 @@ body.light-mode .manoj-info-modern h2 { color: #1a2a3a; }
     text-decoration: none;
 }
 .social-icon-modern:hover {
-    background: rgba(0,212,255,0.05);
-    border-color: #00d4ff;
-    color: #00d4ff;
+    background: rgba(108, 99, 255, 0.05);
+    border-color: var(--primary);
+    color: var(--primary);
     transform: translateY(-2px);
 }
 
+/* ============================================================ */
 /* ====== FOOTER ====== */
+/* ============================================================ */
+
 .footer-modern {
     text-align: center;
     padding: 30px 20px 20px;
@@ -525,9 +596,9 @@ body.light-mode .manoj-info-modern h2 { color: #1a2a3a; }
     color: #fff;
     letter-spacing: 2px;
 }
-body.light-mode .footer-brand-modern { color: #1a2a3a; }
+body.light-mode .footer-brand-modern { color: var(--text-dark); }
 .footer-motto-modern {
-    color: #ff44cc;
+    color: var(--secondary);
     font-size: 0.7rem;
     letter-spacing: 4px;
     margin: 4px 0 10px;
@@ -549,7 +620,7 @@ body.light-mode .footer-brand-modern { color: #1a2a3a; }
     transition: all 0.3s;
     text-decoration: none;
 }
-.footer-icon-modern:hover { color: #00d4ff; transform: translateY(-2px); }
+.footer-icon-modern:hover { color: var(--primary); transform: translateY(-2px); }
 .footer-glow-modern {
     font-size: 0.5rem;
     color: #445566;
@@ -576,7 +647,7 @@ body.light-mode .footer-brand-modern { color: #1a2a3a; }
     .glass-grid-3 { grid-template-columns: 1fr; }
     .news-grid { grid-template-columns: 1fr; }
     .osint-grid { grid-template-columns: 1fr 1fr; }
-    .fifa-grid { grid-template-columns: 1fr 1fr; }
+    .sports-stats { grid-template-columns: 1fr 1fr; }
 
     .manoj-card-modern {
         flex-direction: column;
@@ -599,4 +670,5 @@ body.light-mode .footer-brand-modern { color: #1a2a3a; }
 @media (min-width: 1025px) {
     .hero-title { font-size: 4rem; }
     .manoj-card-modern { padding: 35px 40px; }
+    .sports-stat-value { font-size: 1.6rem; }
 }
