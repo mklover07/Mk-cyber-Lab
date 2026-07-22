@@ -1,11 +1,9 @@
 // ============================================================
-// 🌍 3D GLOBE (Three.js)
+// 🌍 3D GLOBE
 // ============================================================
 
 function initGlobe() {
     const container = document.getElementById('globe-container');
-    if (!container) return;
-    
     const width = window.innerWidth;
     const height = window.innerHeight;
 
@@ -41,7 +39,7 @@ function initGlobe() {
 
     const glowGeometry = new THREE.SphereGeometry(1.05, 48, 48);
     const glowMaterial = new THREE.MeshBasicMaterial({
-        color: 0x4488ff,
+        color: 0x6C63FF,
         transparent: true,
         opacity: 0.06,
     });
@@ -69,16 +67,16 @@ function initGlobe() {
     });
 }
 
+window.addEventListener('DOMContentLoaded', initGlobe);
+
 // ============================================================
-// 🌤️ WEATHER (Real-time)
+// 🌤️ WEATHER
 // ============================================================
 
 async function getWeather() {
     const tempElem = document.getElementById('weatherTemp');
     const cityElem = document.getElementById('weatherCity');
     const iconElem = document.querySelector('.weather-display i');
-    
-    if (!tempElem || !cityElem) return;
 
     try {
         const ipResponse = await fetch('https://ipapi.co/json/');
@@ -93,19 +91,19 @@ async function getWeather() {
 
         if (weatherData.current_weather) {
             const temp = weatherData.current_weather.temperature;
-            if (iconElem) iconElem.className = 'fas fa-cloud-sun';
+            iconElem.className = 'fas fa-cloud-sun';
             tempElem.textContent = `${Math.round(temp)}°C`;
-            cityElem.textContent = city;
+            cityElem.textContent = `${city}`;
         }
     } catch (error) {
-        if (iconElem) iconElem.className = 'fas fa-cloud-sun';
+        iconElem.className = 'fas fa-cloud-sun';
         tempElem.textContent = '34°C';
         cityElem.textContent = 'Jodhpur';
     }
 }
 
 // ============================================================
-// 🕐 CLOCK (Real-time)
+// 🕐 CLOCK
 // ============================================================
 
 function updateClock() {
@@ -113,15 +111,9 @@ function updateClock() {
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     const seconds = String(now.getSeconds()).padStart(2, '0');
-    
-    const timeElem = document.getElementById('currentTime');
-    const dateElem = document.getElementById('currentDate');
-    
-    if (timeElem) timeElem.textContent = `${hours}:${minutes}:${seconds}`;
-    if (dateElem) {
-        const options = { weekday: 'short', day: 'numeric', month: 'short' };
-        dateElem.textContent = now.toLocaleDateString('en-IN', options);
-    }
+    document.getElementById('currentTime').textContent = `${hours}:${minutes}:${seconds}`;
+    const options = { weekday: 'short', day: 'numeric', month: 'short' };
+    document.getElementById('currentDate').textContent = now.toLocaleDateString('en-IN', options);
 }
 
 // ============================================================
@@ -138,8 +130,6 @@ function animateStats() {
 
     stats.forEach(stat => {
         const el = document.getElementById(stat.id);
-        if (!el) return;
-        
         let current = 0;
         const step = Math.ceil(stat.target / 60);
         const interval = setInterval(() => {
@@ -154,23 +144,21 @@ function animateStats() {
 }
 
 // ============================================================
-// 🌙 THEME TOGGLE (Modern)
+// 🌙 THEME TOGGLE
 // ============================================================
 
 function toggleTheme() {
     document.body.classList.toggle('light-mode');
     const btn = document.querySelector('.theme-btn i');
-    if (btn) {
-        if (document.body.classList.contains('light-mode')) {
-            btn.className = 'fas fa-sun';
-        } else {
-            btn.className = 'fas fa-moon';
-        }
+    if (document.body.classList.contains('light-mode')) {
+        btn.className = 'fas fa-sun';
+    } else {
+        btn.className = 'fas fa-moon';
     }
 }
 
 // ============================================================
-// 🌍 THREAT MAP (Live Simulation)
+// 🌍 THREAT MAP
 // ============================================================
 
 function updateThreatMap() {
@@ -182,8 +170,6 @@ function updateThreatMap() {
         '⚠️ Phishing Domain — suspicious.com (IN)'
     ];
     const attackLog = document.getElementById('attackLog');
-    if (!attackLog) return;
-    
     let index = 0;
     setInterval(() => {
         attackLog.textContent = attacks[index % attacks.length];
@@ -198,12 +184,9 @@ function updateThreatMap() {
 function runAIAnalysis() {
     const input = document.getElementById('aiInput');
     const result = document.getElementById('aiResult');
-    if (!input || !result) return;
-    
     const query = input.value.trim() || '8.8.8.8';
     
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> AI Analyzing...';
-    result.className = 'result-modern';
+    result.innerHTML = '🧠 AI Analyzing...';
     
     setTimeout(() => {
         const riskLevels = ['🟢 Low', '🟡 Medium', '🔴 High'];
@@ -227,12 +210,9 @@ function runAIAnalysis() {
 function runDarkWebMonitor() {
     const input = document.getElementById('darkWebInput');
     const result = document.getElementById('darkWebResult');
-    if (!input || !result) return;
-    
     const email = input.value.trim() || 'test@example.com';
     
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Scanning dark web...';
-    result.className = 'result-modern';
+    result.innerHTML = '🕵️ Scanning dark web...';
     
     setTimeout(() => {
         const breaches = ['LinkedIn (2016)', 'Adobe (2013)', 'Collection #1 (2019)', 'None'];
@@ -253,12 +233,9 @@ function runDarkWebMonitor() {
 function runSecurityScan() {
     const input = document.getElementById('scanInput');
     const result = document.getElementById('scanResult');
-    if (!input || !result) return;
-    
     const url = input.value.trim() || 'https://example.com';
     
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Scanning website...';
-    result.className = 'result-modern';
+    result.innerHTML = '🛡️ Scanning website...';
     
     setTimeout(() => {
         result.innerHTML = `
@@ -282,10 +259,8 @@ function startCTF(type) {
         'osint': 'ctfOsintResult'
     };
     const result = document.getElementById(resultMap[type]);
-    if (!result) return;
     
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Starting challenge...';
-    result.className = 'result-modern';
+    result.innerHTML = '🎯 Starting challenge...';
     
     setTimeout(() => {
         const flags = {
@@ -298,16 +273,14 @@ function startCTF(type) {
 }
 
 // ============================================================
-// 🎤 VOICE COMMANDS (with FIFA support)
+// 🎤 VOICE COMMANDS
 // ============================================================
 
 function startVoiceCommand() {
     const result = document.getElementById('voiceResult');
-    if (!result) return;
     
     if (!('webkitSpeechRecognition' in window)) {
-        result.innerHTML = '❌ Voice commands supported in Chrome/Edge only';
-        result.className = 'result-modern error';
+        result.innerHTML = '❌ Voice commands not supported in this browser (use Chrome/Edge)';
         return;
     }
     
@@ -317,68 +290,55 @@ function startVoiceCommand() {
     
     recognition.onstart = () => {
         result.innerHTML = '🎤 Listening... Speak now';
-        result.className = 'result-modern';
     };
     
     recognition.onresult = (event) => {
         const command = event.results[0][0].transcript.toLowerCase();
         result.innerHTML = `🗣️ You said: "${command}"<br>`;
-        result.className = 'result-modern';
         
-        // FIFA Commands
-        if (command.includes('fifa') || command.includes('football') || command.includes('world cup')) {
-            result.innerHTML += '⚽ Fetching FIFA updates...';
-            updateFIFAUIDemo();
-            result.innerHTML += '<br>✅ FIFA updates refreshed!';
-        } else if (command.includes('score') || command.includes('match')) {
-            result.innerHTML += '⚽ Checking live scores...';
-            updateFIFAUIDemo();
-            result.innerHTML += '<br>✅ Scores updated!';
+        if (command.includes('cricket') || command.includes('score') || command.includes('match') || command.includes('sports')) {
+            result.innerHTML += '🏏 Fetching live sports updates...';
+            updateSportsUpdates();
+            result.innerHTML += '<br>✅ Sports updates refreshed!';
         } else if (command.includes('whois')) {
             const domain = command.replace('whois', '').trim() || 'example.com';
-            const input = document.getElementById('whoisInput');
-            if (input) input.value = domain;
+            document.getElementById('whoisInput').value = domain;
             runWhois();
             result.innerHTML += `🔍 WHOIS ${domain}`;
         } else if (command.includes('shodan')) {
             const query = command.replace('shodan', '').trim() || 'apache';
-            const input = document.getElementById('shodanInput');
-            if (input) input.value = query;
+            document.getElementById('shodanInput').value = query;
             runShodan();
             result.innerHTML += `🌐 Shodan ${query}`;
         } else if (command.includes('pwned') || command.includes('breach')) {
             const email = command.replace(/(pwned|breach)/, '').trim() || 'test@example.com';
-            const input = document.getElementById('pwnedInput');
-            if (input) input.value = email;
+            document.getElementById('pwnedInput').value = email;
             runPwned();
             result.innerHTML += `🔓 Check ${email}`;
         } else if (command.includes('weather')) {
             getWeather();
-            result.innerHTML += '🌤️ Weather updated!';
+            result.innerHTML += '🌤️ Fetching weather...';
         } else if (command.includes('time') || command.includes('date')) {
             updateClock();
-            result.innerHTML += '🕐 Time and date updated!';
+            result.innerHTML += '🕐 Updated time and date';
         } else {
-            result.innerHTML += '❌ Try: FIFA, SCORE, WHOIS, SHODAN, PWNED, WEATHER, TIME';
+            result.innerHTML += '❌ Try: SPORTS, WHOIS, SHODAN, PWNED, WEATHER, TIME';
         }
     };
     
     recognition.onerror = () => {
         result.innerHTML = '❌ Could not recognize voice. Try again.';
-        result.className = 'result-modern error';
     };
     
     recognition.start();
 }
 
 // ============================================================
-// 📜 INCIDENT RESPONSE GUIDES
+// 📜 INCIDENT RESPONSE
 // ============================================================
 
 function showGuide(type) {
     const result = document.getElementById('guideResult');
-    if (!result) return;
-    
     const guides = {
         'ransomware': `
             🚨 RANSOMWARE RESPONSE GUIDE<br><br>
@@ -409,77 +369,70 @@ function showGuide(type) {
         `
     };
     result.innerHTML = guides[type] || 'Select a guide to view';
-    result.className = 'result-modern';
 }
 
 // ============================================================
-// ⚽ FIFA WORLD CUP — REAL-TIME UPDATES
+// 🏏 LIVE SPORTS UPDATES
 // ============================================================
 
-function getFIFAUpdates() {
-    try {
-        updateFIFAUIDemo();
-    } catch (error) {
-        console.log('Using demo FIFA data');
-        updateFIFAUIDemo();
-    }
-}
-
-function updateFIFAUIDemo() {
+function updateSportsUpdates() {
+    // Live Matches
     const matches = [
-        { home: '🇦🇷 Argentina', away: '🇫🇷 France', score: '2 - 1', time: "78' • 2nd Half" },
-        { home: '🇧🇷 Brazil', away: '🇵🇹 Portugal', score: '3 - 0', time: "62' • 2nd Half" },
-        { home: '🏴󠁧󠁢󠁥󠁮󠁧󠁿 England', away: '🇩🇪 Germany', score: '1 - 1', time: "45' • Half Time" }
+        { team1: '🇮🇳 India', score1: '245/3 (38.2)', team2: '🇦🇺 Australia', status: '🏏 1st Innings • Live' },
+        { team1: '🏴󠁧󠁢󠁥󠁮󠁧󠁿 England', score1: '189/5 (32.1)', team2: '🇳🇿 New Zealand', status: '🏏 1st Innings • Live' },
+        { team1: '🇵🇰 Pakistan', score1: '312/4 (45)', team2: '🇱🇰 Sri Lanka', status: '🏏 2nd Innings • Live' },
+        { team1: '🇿🇦 South Africa', score1: '156/2 (28)', team2: '🇼🇮 West Indies', status: '🏏 1st Innings • Live' }
     ];
     
-    const liveMatches = document.getElementById('liveMatches');
+    const liveMatches = document.getElementById('liveSportsMatches');
     if (liveMatches) {
         liveMatches.innerHTML = matches.map(m => `
             <div class="match-card-modern">
-                <span class="team">${m.home}</span>
-                <span class="score-modern">${m.score}</span>
-                <span class="team">${m.away}</span>
-                <span class="match-time-modern">⏱️ ${m.time}</span>
+                <span class="team">${m.team1}</span>
+                <span class="score-modern">${m.score1}</span>
+                <span class="team">${m.team2}</span>
+                <span class="match-time-modern">${m.status}</span>
             </div>
         `).join('');
     }
 
-    updateFIFAStats();
-    updateFIFANews();
+    // Update Stats
+    const stats = [
+        { id: 'liveMatches', value: Math.floor(8 + Math.random() * 8) },
+        { id: 'cricketScore', value: ['India 245/3', 'Australia 189/2', 'England 156/4', 'Pakistan 312/5', 'South Africa 289/6', 'New Zealand 178/3'][Math.floor(Math.random() * 6)] },
+        { id: 'topBatsman', value: ['Kohli (78*)', 'Rohit (65)', 'Smith (82)', 'Babar (71)', 'Root (93*)', 'Williamson (54)'][Math.floor(Math.random() * 6)] },
+        { id: 'topBowler', value: ['Bumrah (3/25)', 'Starc (4/32)', 'Rashid (3/18)', 'Shaheen (5/45)', 'Cummins (2/22)', 'Boult (3/28)'][Math.floor(Math.random() * 6)] }
+    ];
+
+    stats.forEach(stat => {
+        const el = document.getElementById(stat.id);
+        if (el) el.textContent = stat.value;
+    });
+
+    // Update Sports News
+    updateSportsNews();
 }
 
-function updateFIFAStats() {
-    const matches = document.getElementById('matchesPlayed');
-    const goals = document.getElementById('goalsScored');
-    const scorer = document.getElementById('topScorer');
-    const nextMatch = document.getElementById('nextMatch');
-    
-    if (matches) {
-        const matchCount = Math.floor(48 + Math.random() * 10);
-        const goalCount = Math.floor(124 + Math.random() * 20);
-        const scorers = ['Mbappé (7)', 'Messi (6)', 'Neymar (6)', 'Haaland (5)', 'Vini Jr. (5)'];
-        const nextMatches = ['France vs Brazil', 'Argentina vs England', 'Germany vs Portugal', 'Spain vs Italy'];
-        
-        matches.textContent = matchCount;
-        goals.textContent = goalCount;
-        scorer.textContent = scorers[Math.floor(Math.random() * scorers.length)];
-        nextMatch.textContent = nextMatches[Math.floor(Math.random() * nextMatches.length)];
-    }
-}
-
-function updateFIFANews() {
+function updateSportsNews() {
     const newsItems = [
-        { badge: 'BREAKING', title: 'Mbappé scores hat-trick in quarter-final', desc: 'France advances to semi-finals with 4-2 win', time: '15 min ago' },
-        { badge: 'UPDATE', title: 'Brazil dominates Portugal 3-0', desc: 'Neymar Jr. leads Brazil to semi-finals', time: '45 min ago' },
-        { badge: 'INJURY', title: 'Key player injured in warm-up', desc: 'Star midfielder ruled out for the tournament', time: '1 hour ago' }
+        { badge: 'Cricket', text: 'Kohli hits century in 3rd ODI', time: '15 min ago' },
+        { badge: 'IPL', text: 'CSK wins IPL 2026 title', time: '2 hours ago' },
+        { badge: 'Football', text: 'Premier League season starts next week', time: '5 hours ago' },
+        { badge: 'Tennis', text: 'Djokovic wins Wimbledon 2026', time: '1 day ago' },
+        { badge: 'Cricket', text: 'Bumrah becomes No.1 ODI bowler', time: '3 hours ago' },
+        { badge: 'IPL', text: 'MI announces new captain for next season', time: '6 hours ago' },
+        { badge: 'Cricket', text: 'India vs Australia series tied 2-2', time: '8 hours ago' },
+        { badge: 'Football', text: 'Messi signs new contract with Inter Miami', time: '12 hours ago' }
     ];
     
-    const fifaNews = document.getElementById('fifaNews');
-    if (fifaNews) {
-        fifaNews.innerHTML = newsItems.map(n => `
-            <div class="fifa-news-item">
-                <span class="news-badge-modern">${n.badge}</span>
-                <span class="news-text">${n.title}</span>
+    // Show latest 4 news
+    const selected = newsItems.slice(0, 4);
+    const sportsNews = document.getElementById('sportsNews');
+    if (sportsNews) {
+        sportsNews.innerHTML = selected.map(n => `
+            <div class="sports-news-item">
+                <span class="news-badge-modern" style="background:#6C63FF;">${n.badge}</span>
+                <span class="news-text">${n.text}</span>
                 <span class="news-time-modern">${n.time}</span>
             </div>
         `).join('');
@@ -487,7 +440,7 @@ function updateFIFANews() {
 }
 
 // ============================================================
-// 📊 ANALYTICS CHARTS (Chart.js)
+// 📊 CHARTS
 // ============================================================
 
 function initCharts() {
@@ -502,39 +455,22 @@ function initCharts() {
                 datasets: [{
                     label: 'Threats',
                     data: [45, 52, 38, 65, 71, 48, 56],
-                    borderColor: '#00d4ff',
-                    backgroundColor: 'rgba(0, 212, 255, 0.05)',
+                    borderColor: '#6C63FF',
+                    backgroundColor: 'rgba(108, 99, 255, 0.1)',
                     tension: 0.4,
                     fill: true,
-                    pointRadius: 3,
-                    pointBackgroundColor: '#00d4ff',
+                    pointRadius: 2,
                     borderWidth: 2
                 }]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
                 plugins: {
-                    legend: {
-                        labels: {
-                            color: '#8899aa',
-                            font: { size: 10 }
-                        }
-                    }
+                    legend: { labels: { color: '#8899aa', font: { size: 10 } } }
                 },
                 scales: {
-                    x: {
-                        ticks: {
-                            color: '#556677',
-                            font: { size: 9 }
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            color: '#556677',
-                            font: { size: 9 }
-                        }
-                    }
+                    x: { ticks: { color: '#556677', font: { size: 8 } } },
+                    y: { ticks: { color: '#556677', font: { size: 8 } } }
                 }
             }
         });
@@ -547,23 +483,14 @@ function initCharts() {
                 labels: ['DDoS', 'Phishing', 'Malware', 'Ransomware', 'Other'],
                 datasets: [{
                     data: [30, 25, 20, 15, 10],
-                    backgroundColor: ['#00d4ff', '#ff44cc', '#ffaa00', '#ff4444', '#44dd88'],
-                    borderWidth: 2,
-                    borderColor: 'rgba(8,12,26,0.8)'
+                    backgroundColor: ['#6C63FF', '#FF6584', '#00D4FF', '#FFD700', '#00D4AA'],
+                    borderWidth: 1
                 }]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
                 plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            color: '#8899aa',
-                            font: { size: 9 },
-                            padding: 10
-                        }
-                    }
+                    legend: { labels: { color: '#8899aa', font: { size: 9 } } }
                 }
             }
         });
@@ -571,220 +498,126 @@ function initCharts() {
 }
 
 // ============================================================
-// 🔍 OSINT TOOLS (10 Tools)
+// 🔍 OSINT TOOLS
 // ============================================================
 
 function runDork() {
     const input = document.getElementById('dorkInput');
     const result = document.getElementById('dorkResult');
-    if (!input || !result) return;
-    
     const query = input.value.trim() || 'site:example.com';
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Searching...';
-    result.className = 'result-modern';
-    
+    result.innerHTML = '🔍 Searching...';
     setTimeout(() => {
-        result.innerHTML = `
-            ✅ Found hidden pages<br>
-            📄 /admin/login.php<br>
-            📄 /backup/config.bak<br>
-            📄 /secret/credentials.txt
-        `;
+        result.innerHTML = `✅ Found hidden pages<br>📄 /admin/login.php<br>📄 /backup/config.bak<br>📄 /secret/credentials.txt`;
     }, 1500);
 }
 
 function runShodan() {
     const input = document.getElementById('shodanInput');
     const result = document.getElementById('shodanResult');
-    if (!input || !result) return;
-    
     const query = input.value.trim() || 'apache port:80';
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Scanning Shodan...';
-    result.className = 'result-modern';
-    
+    result.innerHTML = '🌐 Scanning...';
     setTimeout(() => {
-        result.innerHTML = `
-            🖥️ 12 devices found<br>
-            🔌 192.168.1.105:80 (Apache/2.4.49)<br>
-            🔌 10.0.0.23:443 (nginx)
-        `;
+        result.innerHTML = `🖥️ 12 devices found<br>🔌 192.168.1.105:80 (Apache/2.4.49)<br>🔌 10.0.0.23:443 (nginx)`;
     }, 1600);
 }
 
 function runCensys() {
     const input = document.getElementById('censysInput');
     const result = document.getElementById('censysResult');
-    if (!input || !result) return;
-    
     const domain = input.value.trim() || 'example.com';
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Querying Censys...';
-    result.className = 'result-modern';
-    
+    result.innerHTML = '📡 Querying...';
     setTimeout(() => {
-        result.innerHTML = `
-            🏷️ Host: ${domain}<br>
-            📜 SSL: Let\'s Encrypt<br>
-            🔓 Ports: 80, 443, 22
-        `;
+        result.innerHTML = `🏷️ Host: ${domain}<br>📜 SSL: Let\'s Encrypt<br>🔓 Ports: 80, 443, 22`;
     }, 1400);
 }
 
 function runHarvester() {
     const input = document.getElementById('harvestInput');
     const result = document.getElementById('harvestResult');
-    if (!input || !result) return;
-    
     const domain = input.value.trim() || 'example.com';
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Harvesting emails...';
-    result.className = 'result-modern';
-    
+    result.innerHTML = '📧 Harvesting...';
     setTimeout(() => {
-        result.innerHTML = `
-            📧 admin@${domain}<br>
-            📧 contact@${domain}<br>
-            📧 support@${domain}
-        `;
+        result.innerHTML = `📧 admin@${domain}<br>📧 contact@${domain}<br>📧 support@${domain}`;
     }, 1500);
 }
 
 function runSpiderfoot() {
     const input = document.getElementById('spiderInput');
     const result = document.getElementById('spiderResult');
-    if (!input || !result) return;
-    
     const target = input.value.trim() || 'target.com';
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Crawling with Spiderfoot...';
-    result.className = 'result-modern';
-    
+    result.innerHTML = '🕷️ Crawling...';
     setTimeout(() => {
-        result.innerHTML = `
-            🕸️ Found 47 data points<br>
-            🔗 DNS: ns1.${target}, ns2.${target}<br>
-            📧 15 emails harvested
-        `;
+        result.innerHTML = `🕸️ Found 47 data points<br>🔗 DNS: ns1.${target}, ns2.${target}<br>📧 15 emails`;
     }, 1800);
 }
 
 function runMaltego() {
     const input = document.getElementById('maltegoInput');
     const result = document.getElementById('maltegoResult');
-    if (!input || !result) return;
-    
     const company = input.value.trim() || 'Company XYZ';
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mapping relationships...';
-    result.className = 'result-modern';
-    
+    result.innerHTML = '🕸️ Mapping...';
     setTimeout(() => {
-        result.innerHTML = `
-            🏢 ${company}<br>
-            ├── 📧 ceo@${company}.com<br>
-            ├── 📧 hr@${company}.com
-        `;
+        result.innerHTML = `🏢 ${company}<br>├── 📧 ceo@${company}.com<br>├── 📧 hr@${company}.com`;
     }, 1600);
 }
 
 function runWhois() {
     const input = document.getElementById('whoisInput');
     const result = document.getElementById('whoisResult');
-    if (!input || !result) return;
-    
     const domain = input.value.trim() || 'example.com';
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Fetching WHOIS data...';
-    result.className = 'result-modern';
-    
+    result.innerHTML = '📋 Fetching...';
     setTimeout(() => {
-        result.innerHTML = `
-            📌 Domain: ${domain}<br>
-            🏢 Registrar: NameCheap<br>
-            📅 Created: 1995-08-14
-        `;
+        result.innerHTML = `📌 Domain: ${domain}<br>🏢 Registrar: NameCheap<br>📅 Created: 1995-08-14`;
     }, 1400);
 }
 
 function runVirusTotal() {
     const input = document.getElementById('vtInput');
     const result = document.getElementById('vtResult');
-    if (!input || !result) return;
-    
     const url = input.value.trim() || 'https://example.com';
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Scanning with VirusTotal...';
-    result.className = 'result-modern';
-    
+    result.innerHTML = '🦠 Scanning...';
     setTimeout(() => {
         const safe = Math.random() > 0.3;
-        result.innerHTML = safe 
-            ? `✅ ${url} — Clean<br>🟢 0/72 detections` 
-            : `⚠️ ${url} — Suspicious<br>🟡 3/72 detections`;
+        result.innerHTML = safe ? `✅ ${url} — Clean<br>🟢 0/72 detections` : `⚠️ ${url} — Suspicious<br>🟡 3/72 detections`;
     }, 1700);
 }
 
 function runPwned() {
     const input = document.getElementById('pwnedInput');
     const result = document.getElementById('pwnedResult');
-    if (!input || !result) return;
-    
     const email = input.value.trim() || 'test@example.com';
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking Have I Been Pwned...';
-    result.className = 'result-modern';
-    
+    result.innerHTML = '🔓 Checking...';
     setTimeout(() => {
         const pwned = Math.random() > 0.5;
-        result.innerHTML = pwned 
-            ? `🔴 ${email} — PWNED!<br>📋 Found in 3 breaches` 
-            : `🟢 ${email} — No breaches found!`;
+        result.innerHTML = pwned ? `🔴 ${email} — PWNED!<br>📋 Found in 3 breaches` : `🟢 ${email} — No breaches found!`;
     }, 1500);
 }
 
 function runWayback() {
     const input = document.getElementById('waybackInput');
     const result = document.getElementById('waybackResult');
-    if (!input || !result) return;
-    
     const site = input.value.trim() || 'example.com';
-    result.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Fetching Wayback Machine data...';
-    result.className = 'result-modern';
-    
+    result.innerHTML = '📜 Fetching...';
     setTimeout(() => {
-        result.innerHTML = `
-            🗄️ ${site} — 47 snapshots<br>
-            📅 2024-01-15: "Welcome"<br>
-            📅 2023-08-22: "Under Construction"
-        `;
+        result.innerHTML = `🗄️ ${site} — 47 snapshots<br>📅 2024-01-15: "Welcome"<br>📅 2023-08-22: "Under Construction"`;
     }, 1500);
 }
 
 // ============================================================
-// 🚀 INIT (सब कुछ Start करें)
+// 🚀 INIT
 // ============================================================
 
-document.addEventListener('DOMContentLoaded', function() {
-    // 3D Globe
-    initGlobe();
-    
-    // Weather
-    getWeather();
-    setInterval(getWeather, 300000); // Every 5 minutes
-    
-    // Clock
-    updateClock();
-    setInterval(updateClock, 1000);
-    
-    // Stats Animation
-    animateStats();
-    
-    // Threat Map
-    updateThreatMap();
-    
-    // Charts
-    initCharts();
-    
-    // FIFA Updates
-    getFIFAUpdates();
-    setInterval(getFIFAUpdates, 30000); // Every 30 seconds
-    
-    // Console Welcome
-    console.log('%c⚡ MK Cyber Hub — Modern 2026 Edition', 'font-size:22px;color:#00d4ff;font-weight:bold;');
-    console.log('%c🌍 Truth · Integrity · Justice · Football', 'font-size:14px;color:#ff44cc;');
-    console.log('%c🛸 All 20+ Features Loaded Successfully', 'font-size:12px;color:#8899aa;');
-    console.log('%c🔍 OSINT · AI · FIFA · CTF · Voice Commands', 'font-size:12px;color:#556677;');
-});
+getWeather();
+updateClock();
+setInterval(updateClock, 1000);
+setInterval(getWeather, 300000);
+animateStats();
+updateThreatMap();
+initCharts();
+updateSportsUpdates();
+setInterval(updateSportsUpdates, 30000);
+
+console.log('%c⚡ MK Cyber Hub — Full Update 2026', 'font-size:20px;color:#6C63FF;font-weight:bold;');
+console.log('%c🎨 New Colors: #6C63FF · #FF6584 · #00D4FF', 'font-size:14px;color:#00D4FF;');
+console.log('%c🏏 Live Sports Hub — Cricket + More', 'font-size:14px;color:#FF6584;');
+console.log('%c🛸 All Features Loaded Successfully', 'font-size:12px;color:#556677;');
